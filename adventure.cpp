@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <sstream>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ void notification(int helpint);
 void filein(char* gamefile)
 {
 	string start, end, newpath;
+	int endint;
 
 	ifstream gametext (gamefile);
 
@@ -62,6 +64,10 @@ void filein(char* gamefile)
 				// If key != "path", the value after the colon is a single item string
 				getline(gametext, end, '\n');
 
+				// Create integer based on the text following the colon
+				stringstream endconvert(end);
+				endconvert >> endint;
+			
 				// The new string is passed directly into functions that set string objects of the class. Otherwise, stoi converts to integer first.
 				if (start == "name") 
 					actions[numactions].setname(end); 
@@ -70,15 +76,15 @@ void filein(char* gamefile)
 				else if (start == "description") 
 					actions[numactions].setdescr(end); 
 				else if (start == "chance") 
-					actions[numactions].setchance(stoi(end)); 
+					actions[numactions].setchance(endint); 
 				else if (start == "event") 
 					actions[numactions].setevent(end); 
 				else if (start == "change") 
-					actions[numactions].setalt(stoi(end)); 
+					actions[numactions].setalt(endint); 
 				else if (start == "win") 
-					actions[numactions].gameover(stoi(end)); 
+					actions[numactions].gameover(endint); 
 				else if (start == "max")
-					actions[numactions].eventlimit(stoi(end));
+					actions[numactions].eventlimit(endint);
 			}
 			// Track number of areas taken from the input file
 			numactions++;
