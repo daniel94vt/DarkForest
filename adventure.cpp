@@ -20,70 +20,72 @@ void printcurrent(int eventenable);
 void notification(int helpint);
 
 // Reads in record-jar format file and initializes array of Action objects
-void filein(char* gamefile);
+void filein(char* gamefile)
 {
-  string start, end, newpath;
-  ifstream gametext (gamefile);
+	string start, end, newpath;
 
-  if(gametext != NULL)
-  {
-    while (gametext.peek() != EOF)
-    {
-      if (gametext.peek() == '%') {
-          getline(gametext, start, '\n');
-          continue; }
- 
-      while (gametext.peek() != '%' && gametext.peek() != EOF) {
+	ifstream gametext (gamefile);
 
-          //Get key prior to colon
-          getline(gametext, start, ':');
-         
-          //Ignore leading whitespace for data after colon
-          while (gametext.peek() == ' ')
-              gametext.ignore(1, ' ');
- 
-          // Multiple paths can be specified on single line, so a loop is initiated under this circumstance
-          if (start == "path") {
-              while (gametext.peek() != '\n')
-              {
-                  while (gametext.peek() == ' ')
-                      gametext.ignore(1, ' ');
+	if(gametext != NULL)
+	{
+		while (gametext.peek() != EOF) 
+		{
+			if (gametext.peek() == '%') {
+				getline(gametext, start, '\n');
+				continue; }
 
-                  if (gametext.peek() != '\n')
-                  {
-                      getline(gametext, newpath, ',');
-                      actions[numactions].addpath(newpath);
-                  }
-              }
-              ifstream& get();
-           }
+			while (gametext.peek() != '%' && gametext.peek() != EOF) {
 
-           // If key != "path", the value after the colon is a single item string
-           getline(gametext, end, '\n');
-  
-           // The new string is passed directly into functions that set string objects of the class. Otherwise, stoi converts to integer first.
-           if (start == "name")
-               actions[numactions].setname(end);
-	   else if (start == "prompt") 
-	       actions[numactions].setprompt(end); 
-	   else if (start == "description") 
-	       actions[numactions].setdescr(end); 
-	   else if (start == "chance") 
-               actions[numactions].setchance(stoi(end)); 
-	   else if (start == "event") 
-	       actions[numactions].setevent(end); 
-	   else if (start == "change") 
-	       actions[numactions].setalt(stoi(end)); 
-	   else if (start == "win") 
-	       actions[numactions].gameover(stoi(end)); 
-	   else if (start == "max")
-	       actions[numactions].eventlimit(stoi(end));
+				// Get key prior to colon
+				getline(gametext, start, ':');
+
+				// Ignore leading whitespace for data after colon
+				while (gametext.peek() == ' ')
+					gametext.ignore(1, ' ');
+
+				// Multiple paths can be specified on single line, so a loop is initiated under this circumstance
+				if (start == "path") {
+					while (gametext.peek() != '\n') 
+					{
+						while (gametext.peek() == ' ')
+					           gametext.ignore(1, ' ');
+
+						if (gametext.peek() != '\n')
+						{
+							getline(gametext, newpath, ',');
+							actions[numactions].addpath(newpath); 
+						}
+					}
+					ifstream& get();
+				}
+
+				// If key != "path", the value after the colon is a single item string
+				getline(gametext, end, '\n');
+
+				// The new string is passed directly into functions that set string objects of the class. Otherwise, stoi converts to integer first.
+				if (start == "name") 
+					actions[numactions].setname(end); 
+				else if (start == "prompt") 
+					actions[numactions].setprompt(end); 
+				else if (start == "description") 
+					actions[numactions].setdescr(end); 
+				else if (start == "chance") 
+					actions[numactions].setchance(stoi(end)); 
+				else if (start == "event") 
+					actions[numactions].setevent(end); 
+				else if (start == "change") 
+					actions[numactions].setalt(stoi(end)); 
+				else if (start == "win") 
+					actions[numactions].gameover(stoi(end)); 
+				else if (start == "max")
+					actions[numactions].eventlimit(stoi(end));
+			}
+			// Track number of areas taken from the input file
+			numactions++;
+			//cout << endl << actions[numactions-1].getname();
+		}
+		gametext.close();
 	}
-        // Track number of areas taken from the input file
-        numactions++;
-     }
-     gametext.close();
-  }
 }
 
 // Prints possible paths to player and accepts input based on the letter of the given strings. Returns integer corresponding to path choice.
@@ -95,8 +97,8 @@ int playerChoice()
 
 	while (choice == 42) 
 	{
-        // Prints the options according to the number of paths in the current Action object along with their associated prompts
- 		for (int i = 0; i < numpath; i++)
+		// Prints the options according to the number of paths in the current Action object along with their associated prompts
+		for (int i = 0; i < numpath; i++)
 		{
 			if (i == 0)
 			    cout << "a. ";
@@ -109,7 +111,7 @@ int playerChoice()
 			else if (i == 4)
 				cout << "e. ";
 
-			// Iterates through the Actions to find the specified propmt
+			// Iterates through the Actions to find the specified prompt
 			for (int j = 0; j < numactions; j++)
 			{
 				if (actions[cur].getpath(i) == actions[j].getname())
@@ -121,7 +123,7 @@ int playerChoice()
 		}
 
 		// Allow user input to choose path. Lower/upper-case a-e are associated with choices, 'h' calls notification() to display help text.
-		// 'Z' calls notification() to exit the game. An invalid entry calls notification() to aler the player and print instructions.
+		// 'Z' calls notification() to exit the game. An invalid entry calls notification() to alert the player and print instructions.
 	    cin >> path;
 
 		if (path == "a" || path == "A")
@@ -145,8 +147,8 @@ int playerChoice()
 	return choice;
 }
 
-// Prints top reminder help header, current aciton description, and current stats.
-// If parameter given is 1, the event for the current action is processed.
+// Prints top reminder help header, current action description, and current stats.
+// If parameter given is 1, the event for the current action is processed. 
 void printcurrent(int eventenable)
 {
 	int effect;
@@ -155,10 +157,10 @@ void printcurrent(int eventenable)
 	cout << "z: Exit       h: Help \n-------------------------------------------------\n";
 
 	// Print description of current location
-	cout << (acitons[cur].getdescr());
+	cout << (actions[cur].getdescr());
 
-	//Processes event. If a non-zero integer is returned, either health or sanity is affected.
-	// If either reaches zero, the game ends.
+	// Processes event. If a non-zero integer is returned, either health or sanity is affected. 
+	// If either reaches zero, the game ends. 
 	if (eventenable == 1)
 	{
 		effect = actions[cur].itshappening();
@@ -186,7 +188,7 @@ void printcurrent(int eventenable)
 	cout << "-------------------------------------------------- \n" << username << ", choose your path: \n";
 }
 
-// Called if the player input 'h' for help, 'z' to quit, or an invalid string upon path selection.
+// Called if the player input 'h' for help, 'z' to quit, or an invalid string upon path selection. 
 void notification(int help)
 {
 	string user;
@@ -203,18 +205,18 @@ void notification(int help)
 	}
 
 	cin >> user;
-	
-	// After user input, clears screen and prints current location description and path options without activating possible events.
+
+	// After user input, clears screen and prints current location description and path options without activating possible events
 	printcurrent(0);
 
 	return;
 }
 
-// Contains while loop encompassing the adventure game.
+// Contains while loop encompassing the adventure game. 
 int main()
 {
 	// Read in record-jar formatted text string
-	filein("story.txt");
+	filein("story.rjar");
 
 	string startgame;
 	string next;
@@ -232,11 +234,12 @@ int main()
 		cin >> startgame;
 	}
 
-        // Encompasses the entire story portion of the game. While loop never ends.
+	// Encompasses the entire story portion of the game. While loop never ends.
 	while (1)
 	{
 		// Print current description, player statistics, and event outcome.
-		printcurrent(1);
+        printcurrent(1);
+
 		// Prints array of path choices and prompts for input for path decision. Returns name of chosen path.
 		next = actions[cur].getpath(playerChoice());
 		
