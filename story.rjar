@@ -1,0 +1,1454 @@
+name: asleep
+description: Zzzzzzz...
+path: asleep2, wakeup,
+%
+name: asleep2
+prompt: Stay asleep
+description: 5 more minutes, mom...
+chance: 10
+event: Hope you enjoy that sleep. It's all you'll be doing for the rest of time.
+change: -100
+path: asleep2, wakeup,
+%
+name: wakeup
+prompt: Wake up
+description: You jolt to life, finding yourself in an enclosed space. Leather, dashboard, steering wheel, cup holders... alright, you're inside of a car. But everything is a bit too quiet, and the view outside the window seems rather obscured.
+path: windshield, opendoor,
+%
+name: windshield
+prompt: Inspect window
+description: A trout swimming across the hood gives away the nature of your current location. You are trapped underwater. Wonderful.
+path: panic, opendoor2,
+%
+name: windshield2
+prompt: Look out window
+description: A minnow passing across your vision gives away the nature of your current location. A closed box surrounded by aquatic life is not the way you imagined yourself going out.
+path: panic, calm,
+%
+name: opendoor
+prompt: Open door
+description: Instinctively, you grab the handle to the driver side door. You attempt to open it, but it's jammed on something. 
+chance: 50
+event: Water seeps in through the seam around the door.
+path: panic, windshield2,
+%
+name: opendoor2
+prompt: Open door
+description: Not thinking, you grab the handle to the driver side door. You attempt to open it but the force outside is superior to your own.
+chance: 50
+event: Water seeps in through the seam around the door. Not good!
+change: -1
+max: 1
+path: panic, calm,
+%
+name: panic
+prompt: Panic!
+description: After your predicament dawns on you, you proceed to freak out.
+chance: 100
+event: That is neither helping your sanity nor getting you anywhere.
+change: -1
+max: 5
+path: opendoor2, windshield2, panic,
+%
+name: calm
+prompt: Remain calm
+description: Managing to clear your mind, you take hold of the situation. You are trapped in a submerged vehicle; why and where can come after saving yourself. There must be a way out of this.
+path: winbash, glovebox, backseat, underseat,
+%
+name: winbash
+prompt: Bash window
+description: You bang your fists against the front windshield to no avail. This is industrial strength material you're facing.
+chance: 50
+event: So much for remaining calm.
+change: -1
+max: 1
+path: glovebox, backseat, winbash, underseat,
+%
+name: glovebox
+prompt: Open the glove box
+description: You open the compartment. There is an assortment of papers, presumably registration and the like, but nothing relevant to your current predicament.
+path: backseat, winbash, underseat,
+%
+name: backseat
+prompt: Check back seat
+description: The back of the car is empty. Looks like you are the only victim of this crash... if it was a crash.
+chance: 50
+event: Upon closer inspection, you notice a stain on the seat. Whatever it is, it's dark and seems to have dried a while ago.
+path: glovebox, underseat, winbash,
+%
+name: underseat
+prompt: Check under seat
+description: You reach down underneath your driver seat, feeling something hard. You grasp the object and bring it up to discover, to your relief, a hammer.
+path: glovebox2, backseat2, winbreak, underseat2, holdbreath,
+%
+name: underseat2
+prompt: Check under seat
+description: It looks like the hammer was all that was down there. Nothing left but some crumbs.
+chance: 20
+event: ...and a rather provocative magazine. This isn't the time for that.
+change: 1
+max: 1
+path: glovebox2, winbreak, backseat2, holdbreath,
+%
+name: backseat2
+prompt: Check back seat
+description: The back seat is still empty, not a soul to be found.
+path: underseat2, winbreak, backseat2, holdbreath,
+%
+name: glovebox2
+prompt: Check glove box
+description: The paperwork is still in place. And it is still fairly uninteresting.
+path: underseat2, winbreak, backseat2, holdbreath,
+%
+name: holdbreath
+prompt: Take a deep breath
+description: Alright, you're prepared for anything that might require ample lung capacity in the immediate future.
+path: underseat2, winbreak2, backseat2, glovebox2,
+%
+name: winbreak
+prompt: Break window
+description: Mustering up your strength, you shatter the window, and water rushes in.
+chance: 50
+event: The shards of glass from the window manage to knick you as the force of the water surges into the car.
+change: -10
+path: swim,
+%
+name: winbreak2
+prompt: Break window
+description: Mustering up your strength, you shatter the window, and water rushes in. 
+chance: 50
+event: The shards of glass from the window manage to knick you as the force of the water surges into the car.
+change: -10
+path: swim3,
+%
+name: swim
+prompt: Swim for your life!
+description: After the water has settled, you pull yourself out the front, careful not to grab any broken glass, and begin swimming upward.
+path: swim2,
+%
+name: swim3
+prompt: Swim for your life!
+description: After the water has settled, you pull yourself out the front, careful not to grab any broken glass, and begin swimming upward.
+path: swim4,
+%
+name: swim2
+prompt: Up! Up!
+description: You push further up, aiming for the light shining above the surface of your would-be watery tomb.
+chance: 100
+event: Oh no, you weren't prepared for this distance! You gasp for air, but there's none to be found. 
+change: -2
+path: surface,
+%
+name: swim4
+prompt: Up! Up!
+description: You push further up, aiming for the light shining above the surface of your would-be watery tomb. Good thing you prepared yourself, because it's been quite a swim.
+path: surface,
+%
+name: surface
+prompt: Surface
+description: You now stand in front of a large, foreboding forest. With your back to the lake and dense trees on all sides, it appears as though your path has been chosen for you.
+path: forest, wreckage,
+%
+name: surface2
+prompt: Surface
+description: Certainly no going back that way. Guess you have to press forward.
+path: forest,
+%
+name: wreckage
+prompt: Check wreckage
+description: You inspect the lake you managed to pull yourself out of. The water is too murky to see the vehicle, but a few pieces of debris have floated up to the top.
+path: surface, inspectwreckage,
+%
+name: inspectwreckage
+prompt: Inspect the wreckage
+description: One of the pieces of debris catches your eye. You lean down and pick it up. A hand-knit doll with button eyes returns your gaze. Was this even yours?
+chance: 50
+event: You jump as the water in front of you bubbles. You sigh as you realize that it must just have been trapped air from the vehicle. At least, you hope it is.
+change: -1
+path: surface2,
+%
+name: forest
+prompt: Forest entrance
+description: You are in the forest. A large oak dominates the scenery. You hear a babbling brook somewhere to the east.
+chance: 20
+event: A wild mountain lion attacks! Though you managed to scare it off, you[ve suffered a wound to the chest. -30 HP
+change: -30
+max: 1
+path: tree, creek,
+%
+name: tree
+prompt: Tree
+description: You walk over to the behemoth oak. You peer inside its hollow to find a baby owl, and little else. You are forced to squint as sunlight reflects off of something on an upper branch.
+chance: 10
+event: A monkey eyes you warily. You approach cautiously, and he hands you a banana. Not wanting to insult him, you eat it. +20 HP.
+change: 20
+max: 1
+path: forest, climb,
+%
+name: climb
+prompt: Climb
+description: Despite the physical exertion earlier, you feel you have enough strength to climb up to the object. You make it halfway before finding yourself a fair distance from the next branch. Two jut out on both sides, but it will require additional effort to reach either.
+path: forest3, leftbranch,
+%
+name: forest3
+prompt: Right Branch
+description: Holding your breath, you make your leap.
+chance: 100
+event: However, it proves too far a jump to make, resulting in you plummeting to the ground below with a solid thud. -30 HP
+change: -30
+path: creek,
+%
+name: leftbranch
+prompt: Left Branch
+description: Holding your breath, you make your leap and manage to grab the left branch. It holds and you make your way to the top. You find a silver pocket watch hanging there... perhaps a bird brought it up?
+path: climbdown, openwatch,
+%
+name: openwatch
+prompt: Open Watch
+description: You climb out further to the edge and open the cause of your visionary impairment. Inside is the picture of a young man sporting a blue feathered hat. Whoever this is, you don't know him.
+path: climbdown,
+%
+name: climbdown
+prompt: Climb Down
+description: You make your way back to the bottom of the great oak, feeling a bit better about your odds in the forest after accomplishing such a feat.
+chance: 100
+event: +1 Sanity
+change: 1
+max: 1
+path: forest2,
+%
+name: forest2
+prompt: Return to forest
+description: Back to the start now. That audible creek nearby is making you realize how dry your mouth is. You briefly find humor in the irony of the location from which you just escaped. 
+path: creek,
+%
+name: creek
+prompt: Creek
+description: You walk to a small stream. It is clear enough to see the minnows swimming below.
+path: forest, midstream, drink,
+%
+name: drink
+prompt: Drink
+description: You relax as the crystal clear water eases your weariness.
+chance: 100
+event: +10 HP
+change: 10
+path: forest, midstream, drink2,
+%
+name: drink2
+prompt: Continue drinking
+description: Not satisfied, you continue. It's still just as good!
+chance: 100
+event: +10 HP
+change: 10
+path: forest, midstream, drink2,
+%
+name: midstream
+prompt: Midstream
+description: You decide to travel against the current, eventually leading to a clearing in the woods. The sun is shining down in the center, inviting in its warmth. There isn't a creature to be seen.
+path: upstream, clearing, creek,
+%
+name: clearing
+prompt: Enter the clearing
+description: You enter the sunny opening and bask in the warmth. Maybe it is a good time to rest...
+chance: 100
+event: +1 Sanity
+change: 1
+max: 1
+path: clearing2, midstream,
+%
+name: clearing2
+prompt: Stay a while
+description: You decide to take a nap in the sunlight. Closing your eyes, you let the worries of the world wash away.
+chance: 100
+event: You do not wake up.
+change: -100
+%
+name: upstream
+prompt: Upstream
+description: Moving further up the stream, you see it runs through a ravine. The walls on either side would be too steep to climb if you go inside, but straight through would be the quickest way to your destination.
+chance: 50
+event: A trout leaps up toward you, and you narrowly dodge it.
+max: 1
+path: midstream, ravine, hills,
+%
+name: upstream2
+prompt: Upstream
+description: You return from whence you came, back at the divide between the ravine and the hills.
+path: ravine2, hills,
+%
+name: ravine
+prompt: Ravine
+description: You decide entering the ravine will be the fastest way out of this mess. You move deeper within as the canopy overhead gradually blocks out the light. You think you see movement out of your peripheral vision, but maybe it's a trick of the light.
+path: upstream2, peripheral, ravineexit,
+%
+name: ravine2
+prompt: Ravine
+description: Alright, maybe this time you'll be able to pull yourself through. It was just nerves getting to you last time, there's nothing to be afraid of. 
+chance: 100
+event: ...but once again, the shadows seem to be playing with you. You swear you see movement just outside your cone of vision.
+path: upstream2, peripheral, ravineexit,
+%
+name: peripheral
+prompt: Inspect further
+description: Letting curiosity get the better of you, you decide to follow up to see if what you saw was real or simply a trick of the mind. You walk over to an alcove in the side of the ravine, but it is much too dark to see inside. Still, you can't help but think that, despite your inability to see, something else is watching you.
+chance: 100
+change: -1
+path: upstream2, ravineexit,
+%
+name: ravineexit
+prompt: Ravine exit
+description: Bypassing what you may have seen, you increase your pace as you ignore the tingling feeling creeping up the back of your neck. You refuse to turn around as you hear a rustle, a snap of a twig. You place all your focus toward the light at the end of the ravine.
+chance: 40
+event: You feel something grab your ankle from behind. Before you can turn, you have fallen face first into the dirt and begin sliding back into the depths of the ravine.
+change: -100
+path: ravineexit2, turnaround,
+%
+name: turnaround
+prompt: Face your fears
+description: You muster up the courage to face whatever may or may not be after you, hoping this was all just your imagination.
+chance: 100
+event: This was a bad idea.
+change: -100
+%
+name: ravineexit2
+prompt: RUN!
+description: Your heart races as you break into the lit clearing at the end of the cavernous ravine. You made it!
+chance: 100
+event: The path now branches to either side of you... the only other option is back.
+change: 1
+path: leftsmoke4, rightsmoke4, lookback,
+%
+name: lookback
+prompt: Look back into ravine
+description: You turn around and gaze into the depths. Darkness shrouds the ravine... 
+chance: 100
+event: Was this all just a combination of lighting and your mind creating monsters for yourself?
+change: -1
+path: leftsmoke4, rightsmoke4, turnaround,
+%
+name: hills
+prompt: Hills
+description: Acting with caution, you take the high ground in hopes that the extra effort will be worth avoiding the risk of being trapped. Climbing the hill rewards you with a scenic overview of the forest... it is big. You see two plumes of smoke, one to the right and one to the left
+chance: 30
+event: A bird flies overhead and drops a... present... on your shoulder. Just what your day needed. -1 Sanity.
+change: -1
+max: 1
+path: rightsmoke, leftsmoke, upstream2,
+%
+name: hills2
+prompt: Back to hills
+description: You return to the overlook on top of the hill.
+path: rightsmoke, leftsmoke, upstream2,
+%
+name: rightsmoke
+prompt: Right Smoke
+description: You decide to take the right path - it is your lucky direction, after all.
+path: hills2, rightsmoke2,
+%
+name: rightsmoke2
+prompt: Continue right
+description: You head in the direction of the smoke, gradually losing the visual of your destination as the canopy obscures the sky above. You faintly hear a melody to your left.
+path: centersmoke2, rightsmoke3,
+%
+name: leftsmoke
+prompt: Left Smoke
+description: You decide to take the left path - it is your lucky direction, after all.
+path: hills2, leftsmoke2,
+%
+name: leftsmoke2
+prompt: Continue left
+description: You head in the direction of the smoke. As the canopy overhead becomes more dense, you lose sight of the sky above. To your right, a soothing melody emanates from the forest.
+path: centersmoke1, leftsmoke3,
+%
+name: leftsmoke3
+prompt: Left smoke
+description: No distractions. You set your destination and you're keeping to it.
+path: leftsmoke4,
+%
+name: centersmoke1
+prompt: Investigate melody
+description: You let the soothing voice guide your steps as you deviate from your original path. 
+chance: 100
+event: You see a figure in the distance. It looks like a child, but it slips away behind the trees as you approach
+path: child, leftsmoke3,
+%
+name: centersmoke2
+prompt: Investigate melody
+description: You let the soothing voice guide your steps as you deviate from your original path. 
+chance: 100
+event: You see a figure in the distance. It looks like a child, but it slips away behind the trees as you approach
+path: child, rightsmoke3,
+%
+name: child
+prompt: Follow child
+description: You follow around the base of the large oak and see the child once again farther into the woods, slipping away before you can get a proper look yet again. The melody from before is growing louder.
+path: child2,
+%
+name: child2
+prompt: Press forward
+description: You quicken your pace, desperate for human contact. The singing continues to intensify as you proceed around another bark-covered behemoth, and another, the child slipping away after every corner. Finally, you have almost caught up when he takes another right around a tree, but you find the opportunity to turn early and cut him off this time. Without a sound, you divert your path to counter his clockwise movement...
+chance: 100
+event: The music stops. The child is nowhere to be seen.
+path: child3,
+%
+name: child3
+prompt: View surroundings
+description: You are standing in a clearing that stands out from the rest of the forest. There is a grassless mound in the center, flowers are growing around it. You note markings on a tree to the side. 
+path: mound, bark, flowers, clearingexit,
+%
+name: bark
+prompt: Inspect tree
+description: The damaged bark on the tree forms a heart, and it seems like some initials are etched inside. "B.L."
+path: mound, flowers, child3, clearingexit,
+%
+name: flowers
+prompt: Look at flowers
+description: The flowers growing here seem oddly well-kept, like someone has visited recently.
+chance: 60
+event: You reach down to pick one up, and recoil as you feel a sting. The stems are covered in thorns
+change: -5
+max: 1
+path: mound, bark, child3, clearingexit,
+%
+name: mound
+prompt: Inspect mound
+description: You check the mound. The dirt appears to be recently packed. Even if you had something to dig with, it wouldn't exactly be your first choice of actions.
+path: bark, flowers, child3, clearingexit,
+%
+name: clearingexit
+prompt: Clearing exit
+description: You head toward the exit of this silent scene, child nowhere to be found. In front of you is a steep slope, but viable paths jut to either side of your current location.
+path: childreturn, rightsmoke4, leftsmoke4,
+%
+name: childreturn
+prompt: Return to clearing
+description: You turn back. The air seems tense and not a creature is stirring. 
+path: mound, bark, child3, flowers, clearingexit,
+%
+name: rightsmoke3
+prompt: Right smoke
+description: No distractions. You set your destination and you're going to keep to it. 
+path: rightsmoke4,
+%
+name: rightsmoke4
+prompt: To the right
+description: You travel along the dimly lit path.
+chance: 100
+event: Suddenly, you lose your footing. You attempt to grab something to right yourself, but nothing is within reach but leaves and mud as you tumble downward. 
+chance: 100
+event: Following a rough landing, you pick yourself up by the britches and take in your new surroundings.
+change: -10
+path: pit,
+%
+name: pit
+prompt: Pit
+description: You're standing at the entrance to a cave. Light is emanating from within. 
+path: cave1, backwall,
+%
+name: backwall
+prompt: Turn back
+description: You retreat to climb out of the pit, but the wall is dangerously steep and damp. You probably can't get back to where you were. 
+path: cave1, climbwall,
+%
+name: climbwall
+prompt: Try anyway
+description: Using your muscle memory from high school gym class, you take things one arm or leg at a time as you pull yourself up the slope.
+chance: 100
+event: ...but it's not good enough. You slip and slide back down to the pit, slightly dirtier and in lower spirits than before.
+change: -1
+path: cave1,
+%
+name: cave1
+prompt: Cave entrance
+description: A torch lines the wall to the right, and markings are visible on the left. The path continues forward.
+chance: 100
+event: Obviously, you're not the first person to enter this cave.
+max: 1
+path: cave2, torch, drawings, floor, pit,
+%
+name: torch
+prompt: Inspect torch
+description: Surprisingly, it's still burning strong. There must be someone else here if the torch is still fresh.
+chance: 50
+event: An ember flicks off of the rod and lands on your arm. You reflexively swat it away as it begins to burn.
+max: 1
+path: cave2, drawings, floor, pit,
+%
+name: drawings
+prompt: Look at drawings
+description: They appear to be what you perceive to be typical cave paintings. If true, they could possibly be thousands of years old. It seems to depict a family living in a dome-lidded hut, complete with mother, father, and two children. 
+path: cave2, floor, torch, pit,
+%
+name: floor
+prompt: Inspect ground
+description: The dirt floor of the cave shows faint traces of footsteps. A set appears to lead further into the depths, but none the other direction. 
+path: cave2, drawings, torch, pit,
+%
+name: cave2
+prompt: Go deeper into cave
+description: Since it doesn't look like you're going back, you trek forward into the cave, light intensity fluctuating as you pass by more torches along the way. More markings line the wall.
+path: cave3, cave1, floor2, drawings2,
+%
+name: cave2-2
+prompt: Retreat toward cave entrance
+description: You decide to retrace your steps back toward the entrance. You come back to the second set of drawings.
+path: cave3-2, cave1, floor2, drawings2,
+%
+name: floor2
+prompt: Inspect floor
+description: A single set of footprints descends further into the maw.
+path: cave3, cave1, drawings2,
+%
+name: drawings2
+prompt: Inspect drawings
+description: The markings depict a family of two adults and a child in front of a dome-shaped hut. Looming behind is some sort of erratically-drawn mass of black. You can't tell if it was originally part of the piece or not.
+path: cave3, cave1, floor2,
+%
+name: cave3
+prompt: Continue into cave
+description: The linear pathway leads you to a fork in the road. Both the left and right directions appear to be lit so there doesn't seem to be an obvious right choice here. You spy yet another piece of art on the wall.
+path: cave2-2, caveright, caveleft, floor3, drawings3,
+%
+name: floor3
+prompt: Inspect floor
+description: The ground shows that the previous entrant took both paths, but only the footprints to the right are going both to and from that direction. What does that mean?
+path: caveright, caveleft, cave2-2, drawings3,
+%
+name: drawings3
+prompt: View painting
+description: The drawings on the split between the paths depicts an adult and child; a hut lies to the left, and two mounds in the ground occupy the immediate left. To the far left appears to be a cave, its entrance filled in with black. 
+chance: 100
+event: Upon second glance, it seems like the blackness within the dave is seeping out of the sides. Maybe someone never learned to draw within the lines.
+max: 2
+path: caveright, caveleft, cave2-2, floor3,
+%
+name: cave3-2
+prompt: Back to fork
+description: You return to the fork in the cave. 
+path: cave2-2, caveright, caveleft, floor3, drawings3,
+%
+name: caveright
+prompt: Take right fork
+description: You move into the right branch of the path. There's a piece of paper on the ground and drawings on the wall.
+chance: 100
+event: It seems you've hit a dead end on your way. There's no visible path suitable for a person to squeeze through anywhere.
+max: 1
+path: cave3-2, drawingright, paperright, floorright,
+%
+name: drawingright
+prompt: Inspect drawing
+description: A cave painting depicts an interesting scene: An owl holds a snake in its talons, which in turn has a bulge in its stomach... in the shape of a rodent, perhaps? A gaping maw encloses the entire scene, it seems.
+path: cave3-2, paperright, floorright,
+%
+name: paperright
+prompt: Pick up paper
+description: This certainly wasn't made by man's ancestors like the paintings lining the walls. A note written in plain English states, "The serpent consumes all in the end."
+chance: 50
+event: Having held the paper up near a torch to read it, you notice as the corner catches fire. You snuff out the flame before it can ruin the whole page.
+max: 1
+path: cave3-2, floorright, drawingright,
+%
+name: floorright
+prompt: Inspect floor
+description: Footprints litter the floor; whoever was here last found himself stuck and turned back around at some point.
+path: cave3-2, drawingright, paperright,
+%
+name: caveleft
+prompt: Take left fork
+description: You move into the left branch of the path. The air seems to chill down a little as you progress. 
+chance: 100
+event: You seem to hit a dead end on your way. There's no path suitable for a person to squeeze through in any direction.
+max: 1
+path: floor4, checkleft, checkright, checkfront, cave3-2,
+%
+name: caveleft2
+prompt: Stop the puzzle
+description: You back away from the wall.
+path: floor4, checkleft, checkright, checkfront, cave3-2,
+%
+name: checkleft
+prompt: Check left wall
+description: It's rock solid.
+chance: 50
+event: While moving your hands over the surface, you feel a sting. You retract your hand to see a bite mark puffing up. Returning your gaze to the wall, you can't spot the offender of the crime.
+change: -10
+max: 1
+path: floor4, checkright, checkfront, cave3-2,
+%
+name: checkright
+prompt: Check right wall
+description: It's rock solid.
+chance: 30
+event: You see a spider. And you smush it. Victory!
+change: 1
+max: 1
+path: floor4, checkleft, checkfront, cave3-2,
+%
+name: floor4
+prompt: Inspect floor
+description: You note that the set of footprints you have followed end here... but there's no sign of them turning around anywhere.
+path: checkright, checkleft, cave3-2, checkfront,
+%
+name: checkfront
+prompt: Check front wall
+description: Bringing up a torch to inspect the front wall, you spy the small dial. The circle is cut into four sections each bearing a depiction of an animal: You figure them to be a rat, a snake, an owl, and some sort of bug.
+chance: 100
+event: Testing it out, you find the dial moves, and it seems like it was designed to press inward when in a certain orientation. 
+max: 1
+path: rat2, bird2, insect, snake2, caveleft2,
+%
+name: bird2
+prompt: Bird
+description: You rotate the dial until the bird is oriented at the top and press inward.
+chance: 100
+event: The dial pops out and forcefully spins back to its original position.
+path: rat2, bird2, insect, snake2, caveleft2,
+%
+name: snake2
+prompt: Snake
+description: You rotate the dial until the snake is oriented at the top and press inward.
+chance: 100
+event: The dial pops out and forcefully spins back to its original position.
+path: rat2, bird2, insect, snake2, caveleft2,
+%
+name: rat2
+prompt: Rat
+description: You rotate the dial until the rat is oriented at the top and press inward. 
+chance: 100
+event: The dial pops out and forcefully spins back to its original position.
+path: rat2, bird2, insect, snake2, caveleft2,
+%
+name: insect2
+prompt: Insect
+description: You rotate the dial until the insect is oriented at the top and press inward.
+chance: 100
+event: The dial pops out and forcefully spins back to its original position.
+path: rat2, bird2, insect, snake2, caveleft2,
+%
+name: bird
+prompt: Bird
+description: You rotate the dial until the bird is oriented at the top and press inward.
+chance: 100
+event: The dial clicks into place!
+path: rat2, bird2, insect2, snake3, caveleft2,
+%
+name: snake
+prompt: Snake
+description: You rotate the dial until the snake is oriented at the top and press inward.
+chance: 100
+event: The dial clicks into place!
+path: rat2, bird, insect2, snake2, caveleft2,
+%
+name: rat
+prompt: Rat
+description: You rotate the dial until the rat is oriented at the top and press inward. 
+chance: 100
+event: The dial clicks into place!
+path: rat2, bird2, insect2, snake, caveleft2,
+%
+name: insect
+prompt: Insect
+description: You rotate the dial until the insect is oriented at the top and press inward.
+chance: 100
+event: The dial clicks into place!
+path: rat, bird2, insect2, snake2, caveleft2,
+%
+name: snake3
+prompt: Snake
+description: You rotate the dial until the insect is oriented at the top and press inward.
+chance: 100
+event: Suddenly, you hear and feel a rumbling as the wall in front of you miraculously lifts off the ground. It worked! More light can be seen within.
+path: morecave, caveleft3,
+%
+name: caveleft3
+prompt: Retreat to fork
+description: Despite your success, you head back to the fork in the cave.
+chance: 100
+event: As you progress, you see the shadow of something around the corner. You hear a low, unnatural growl as it approaches.
+path: beast, morecave,
+%
+name: beast
+prompt: Approach the creature
+description: Deciding to face this new unknown rather than bring yourself deeper into this tunnel, you press onward.
+chance: 100
+event: You turn the corner, before you can react, a limb swipes you to the ground. Your last thoughts are your regrets as a dark mass, silhouetted by the torch behind it, descends upon you.
+change: -100
+%
+name: morecave
+prompt: Enter through the doorway
+description: You descend deeper into the now-accessible tunnel and find yourself in another relatively open area.
+chance: 100
+event: The wall closes behind you before you can react!
+max: 1
+path: morecave2, checkfront2,
+%
+name: checkfront2
+prompt: Inspect the closed door
+description: There is no dial on this side. The wall is solid stone, much too heavy for you to move back into position.
+chance: 100
+event: Do you even lift?
+change: -1
+max: 1
+path: morecave2,
+%
+name: morecave2
+prompt: Enter open area
+description: You walk into the room. An opening in the ceiling allows sunlight down into the room onto a stone tablet, a pool of water surrounding it from a previous shower above. More drawings are visible on the wall on the far side. Ahead, a single torch is lit beside another tunnel shrouded in darkness within. It seems whoever was here has not mapped further in. 
+path: drawings4, tablet, pool, blackness, checkfront2,
+%
+name: drawings4
+prompt: Inspect drawings
+description: The cave painting depicts a single man, seemingly on his knees. Three mounds lie in front of him on the ground, and behind is a hut in the midst of a blazing inferno. Black lines appear to seep out of the man and coalesce above in a singular mass of blackness.
+path: tablet, pool, blackness, checkfront2,
+%
+name: blackness
+prompt: Inspect the tunnel
+description: You move toward the darkened tunnel. Maybe you should check around the room some more before trying to navigate it on your own. 
+chance: 50
+event: You get that feeling that you aren't alone, the hairs of your neck creeping up. You push the thoughts away as you move back into the room.
+change: -1
+max: 1
+path: drawings4, tablet, pool, checkfront2,
+%
+name: pool
+prompt: Look at the pool
+description: No life is in this body of water. Unsurprising, since it probably only formed from rainwater through the hole in the ceiling. It appears rather murky.
+path: drinkpool, drawings4, tablet, checkfront2, blackness,
+%
+name: drinkpool
+prompt: Drink the water
+description: Thirstily, you dip your hands into the water and take a gulp. 
+chance: 100
+event: Bleck! This can hardly be called water! You feel your stomach immediately becoming upset. 
+change: -5
+path: drawings4, tablet, checkfront2, blackness,
+%
+name: tablet
+prompt: Inspect tablet
+description: You step over the pool of water and walk up to the tablet. There is writing etched into it, and it appears to be Latin. It seems in oddly good condition for being so exposed to the elements like it is.
+path: read, drawings4, pool, blackness, checkfront2,
+%
+name: read
+prompt: Read tablet
+description: Since you've never seen a horror movie before, you begin reading the writings aloud, channeling three years of high school and a semester of university worth of education. You still don't understand all of what you're saying, but you can make out some things near the end... "Forward into darkness, right away the choice is clear; downfall is inevitable, but left to your own devices, and keeping your focus straight, ascension will come."
+path: exittablet,
+%
+name: exittablet
+prompt: Back away from tablet
+description: Finished reading, you retreat back toward the center of the room. 
+chance: 100
+event: ...huh. Really expected something to happen there.
+path: false1, false2, false3, false4,
+%
+name: false1
+prompt: Look at the pool
+description: You return to the pool to see if you missed anything. It's just a murky mess of liquid.
+chance: 100
+event: Wait... what's that?
+path: blackness2,
+%
+name: false2
+prompt: Inspect the tunnel
+description: You turn back to look at the darkened tunnel.
+chance: 100
+event: Wait... what's that?
+path: blackness2,
+%
+name: false3
+prompt: Inspect drawings
+description: You walk over to the cave paintings to see if you missed anything.
+chance: 100
+event: Wait... what's that?
+path: blackness2,
+%
+name: false4
+prompt: Inspect the closed door
+description: You head back to the closed door to see if there's some way to head back.
+chance: 100
+event: Wait... what's that?
+path: blackness2,
+%
+name: blackness2
+prompt: Huh?
+description: Movement out of the corner of your eyes. You trace your vision along to the corner of the room, where the light from above barely reaches. Are those... eyes?
+chance: 100
+event: You look more closely and realize the same is being done to you. Eyes adjusting to the darkness, you see a silhouette rise in the corner, humanoid in form but larger than yourself. Its eyes never blink and never move away from your own.
+path: blackness3,
+%
+name: blackness3
+prompt: Uh... run.
+description: You've seen enough. You turn and run toward the one viable exit from the room, the darkened corridor. Ripping the torch from the wall, you pray this leads you somewhere as your surroundings gradually come into view ahead of you.
+chance: 100
+event: You trip and fall. Looking back, you see what you presume to be the remains of the body whose footprints you have been following. Some vital pieces are missing.
+path: getup,
+%
+name: getup
+prompt: Get up!
+description: You pick yourself up along with the fortunately still-lit torch. You see that you have come to a four-way intersection in the tunnel, and it's obviously imperative that you choose the right one. 
+path: badleft, badstraight, goodright,
+%
+name: goodright
+prompt: Right
+description: You choose the path to the right. You can hear a low growl from the room you left as you sprint further ahead, eventually reaching another intersection. The left path seems to climb upward, the right one is level with your own, and the forward path seems to sink deeper down.
+path: badup, gooddown, badlevel,
+%
+name: gooddown
+prompt: Down
+description: Against instinct, you head through the downward sloped path. Your firelight fortunately is still going strong as you come to yet another fork. You don't hear anything behind you, but you know your vital light is giving away your position. 
+path: goodleft, badstraight,
+%
+name: goodleft
+prompt: Left
+description: You hang a left, your chest heavy and legs starting to feel the burn. When will this maze end? 
+path: badleft, goodstraight, badright,
+%
+name: goodstraight
+prompt: Straight
+description: You don't lose any speed as you bypass the side routes this time. You're beginning to hear footsteps, but you can't tell where they're coming from with the acoustics of the tunnel reverberating the sound in all directions. You come to another fork of different sloped paths.
+path: goodup, baddown, badlevel,
+%
+name: goodup
+prompt: Up
+description: You hear a deafening scream from behind, dropping your torch. As the light diminishes, you find you can still see your surroundings despite it. The tunnel is being lit from sunlight ahead!
+path: exitcave,
+%
+name: badleft
+prompt: Left
+description: You head left. You keep running, right into a dead end. 
+chance: 100
+event: You hear the thing approaching from behind, and you find yourself frozen in fear, not able to turn back. You know it's over.
+change: -100
+%
+name: badstraight
+prompt: Straight
+description: You head straight. You keep running, right into a dead end. 
+chance: 100
+event: You hear the thing approaching from behind, and you find yourself frozen in fear, not able to turn back. You know it's over.
+change: -100
+%
+name: badright
+prompt: Right
+description: You head right. You keep running, right into a dead end. 
+chance: 100
+event: You hear the thing approaching from behind, and you find yourself frozen in fear, not able to turn back. You know it's over.
+change: -100
+%
+name: badup
+prompt: Up
+description: You head upward. You keep running, right into a dead end. 
+chance: 100
+event: You hear the thing approaching from behind, and you find yourself frozen in fear, not able to turn back. You know it's over.
+change: -100
+%
+name: baddown
+prompt: Down
+description: You head downward. You keep running, right into a dead end. 
+chance: 100
+event: You hear the thing approaching from behind, and you find yourself frozen in fear, not able to turn back. You know it's over.
+change: -100
+%
+name: badlevel
+prompt: Level
+description: You head in the direction level to your own. You keep running, right into a dead end. 
+chance: 100
+event: You hear the thing approaching from behind, and you find yourself frozen in fear, not able to turn back. You know it's over.
+change: -100
+%
+name: exitcave
+prompt: RunRunRunRunRunRunRun
+description: You break through the exit of the cave and back into the forest, and you don't stop. You can't stop; there's no way you're looking back. 
+path: runmore, stoprunning,
+%
+name: runmore
+prompt: Keep running
+description: You don't stop. You can't stop. There's no way you're looking back. 
+path: runmore, stoprunning,
+%
+name: stoprunning
+prompt: Stop running
+description: After several minutes, you just can't handle the pain from the exertion. You come to a stop and dare to turn around. You don't see or hear any sign of... whatever that was.
+chance: 100
+event: The fear and exhaustion reaching up, you lose your lunch on the ground, then take a seat on a nearby rock. If that thing is still after you, he can have you.
+path: winstate,
+%
+name: leftsmoke4
+prompt: To the left
+description: After a while of walking, you bust through some shrubbery to find yourself somewhere unexpected. There is a cabin ahead, smoke churning out of the chimney. Was this the plume you originally set out toward?
+chance: 100
+event: Regardless, it's where you're headed now. You're not passing this opportunity up.
+path: backhouse, fronthouse,
+%
+name: fronthouse
+prompt: Front of cabin
+description: You make your way to the front of the house. It looks fairly inviting in its simplicity.
+chance: 40
+event: A rustle overhead: A crow takes off from the roof and flies toward the heart of the forest.
+max: 1
+path: frontwindow, frontdoor, righthouse, lefthouse,
+%
+name: fronthouse2
+prompt: Front of cabin
+description: You return to the cabin's front yard.
+chance: 100
+event: As you turn back, you hear the door shut close behind you. 
+path: frontwindow, frontdoor, righthouse, lefthouse,
+%
+name: righthouse
+prompt: Right of cabin
+description: You are on the right side of the cabin. There is a stump off to the side.
+path: fronthouse, backhouse, stump,
+%
+name: stump
+prompt: Inspect stump
+description: There is an axe lying on the stump, and a pile of firewood lay beside it.
+path: fronthouse, backhouse, chop,
+%
+name: chop
+prompt: Chop wood
+description: You place firewood on the stump and take a hefty swing of your axe, splitting the log in two.
+chance: 100
+event: That felt good. Your perception of your chances out here has increased.
+change: 1
+max: 1
+path: fronthouse, backhouse, stump, chop,
+%
+name: lefthouse
+prompt: Left of cabin
+description: You are on the left side of the cabin, relative to the front entrance. Some materials lie alongside its base. 
+path: fronthouse, backhouse, materials,
+%
+name: materials
+prompt: Inspect materials
+description: It's a random pile of knick-knacks, all seemingly hand-crafted. 
+path: fronthouse, backhouse, materials2,
+%
+name: materials2
+prompt: Inspect further
+description: Reaching into the rubble, you pull out a hand-sewn doll with button eyes. It feels oddly familiar. 
+chance: 20
+event: Did its smile just shift? Must be your mind playing tricks.
+max: 1
+path: fronthouse, backhouse, lefthouse,
+%
+name: backhouse
+prompt: Back of cabin
+description: Hesitant to be completely trusting, you sneak to the back of the cabin to get a stronger hold of the situation.
+chance: 100
+event: You notice as a silhouette moves past one of the windows. There's definitely someone inside.
+max: 1
+path: backwindow, backdoor, righthouse, lefthouse,
+%
+name: backhouse2
+prompt: Back of cabin
+description: You are back behind the cabin. 
+chance: 100
+event: The back window slides shut behind you of its own volition. 
+path: backwindow, backdoor, righthouse, lefthouse,
+%
+name: frontwindow
+prompt: Look in window
+description: You peer into the front window of the cabin. The glass is dusty and your view is obscured, but you can tell that the room is empty. 
+path: frontdoor, fwopen, righthouse, lefthouse,
+%
+name: fwopen
+prompt: Open window
+description: The window is locked. It won't budge.
+path: frontdoor, righthouse, lefthouse,
+%
+name: frontdoor
+prompt: Inspect door
+description: Unfamiliar markings are carved into the door. It's certainly not language, but they may be symbols. The bottom is weathered and visibly cracking. 
+path: fdopen, frontwindow, righthouse, lefthouse,
+%
+name: fdopen
+prompt: Knock
+description: To your surprise, the door opens at your touch, but no one appears to be in the room ahead of you.
+path: room1-1, fronthouse2,
+%
+name: backwindow
+prompt: Look in window
+description: A quaint dining room appears to be within, but no one is present. 
+path: bwopen, backdoor, righthouse, lefthouse,
+%
+name: bwopen
+prompt: Open window
+description: This window slides upward, granting you access to the inside of the house. The room inside is empty, but you wonder how smart such an entrance would be under these circumstances.
+path: room3-2, backhouse2,
+%
+name: backdoor
+prompt: Inspect door
+description: A circle with some intricate characters is etched into the wooden structure. You don't know what it means. 
+path: bdopen, backwindow, righthouse, lefthouse,
+%
+name: bdopen
+prompt: Open door
+description: You press on the handle, but the door appears to be locked. You're not getting in this way. 
+path: backwindow, righthouse, lefthouse,
+%
+name: room1-1
+prompt: Enter house
+description: Walking into the open doorway, you find yourself in the cabin's living room. A sofa lines the back wall, and a radio has its position on a side table. 
+path: room2, room4, sitsofa, radio, fronthouse2,
+%
+name: room1
+prompt: Living Room
+description: You are in the living room. A sofa adorns the wall, with a radio lying on an adjacent table.
+path: room2, room4, sitsofa, radio, fronthouse2,
+%
+name: radiooff
+prompt: Turn off radio
+description: You turn off your sound box and stand up in the living room.
+path: room2, room4, sitsofa, radio, fronthouse2,
+%
+name: sitsofa
+prompt: Sit on the sofa
+description: You sit on the sofa, basking in the peace and quiet. You faintly hear a hum from another room. 
+path: room2, room4, radio, fronthouse2,
+%
+name: radio
+prompt: Turn on radio
+description: You flick on the radio. You're only getting static.
+path: radiooff, radio2, radio3, radio4, radio5,
+%
+name: radio2
+prompt: 101.2
+description: You change the frequency. You can hear a country song behind the static. The gruff man in singing of a lost lover.
+chance: 50
+event: Dang, they say that those who listen to country are the saddest types of people, and this definitely serves as proof.
+change: -1
+max: 1
+path: radiooff, radio3, radio4, radio5,
+%
+name: radio3
+prompt: 104.6
+description: You change the frequency. Instantly, you recognize the singer as Elvis.
+chance: 100
+event: Hail to the King, baby.
+change: 1
+max: 1
+path: radiooff, radio2, radio4, radio5,
+%
+name: radio4
+prompt: 107.2
+description: You change the frequency. Vocals begin to come through more clearly... no, not vocals, it's dialogue. They still do radio plays these days? 
+chance: 50
+event: Hey, you know this one! Soylent green is people!
+max: 1
+path: radiooff, radio2, radio3, radio5,
+%
+name: radio5
+prompt: 109.9
+description: You change the frequency. A local weather report is playing on repeat. It sounds like it's going to be a chilly night. 
+chance: 25
+event: 'It's going to be chilly tonight but certainly not as bad as last' -zzZzZzz- 'Don't trust her' -zzZzzZ- '60's tomorrow as rain moves in from the east...'
+max: 1
+path: radiooff, radio2, radio3, radio4,
+%
+name: room2
+prompt: Bedroom
+description: You are in a bedroom. A queen-size bed occupies the center, and a sewing machine faces the corner.
+path: room1, room3, laybed, underbed, sew,
+%
+name: laybed
+prompt: Lay on the bed
+description: Aaaaahhhhh... Bliss.
+chance: 100
+event: You feel rejuvenated.
+change: 20
+max: 1
+path: room1, room3, underbed, sew,
+%
+name: underbed
+prompt: Look under bed
+description: There seems to be a hatch underneath. You assume it leads down to the basement, but there's no real need to check that far right now.
+chance: 100
+event: You also notice a blue feathered hat below the bed. How strange...
+max: 1
+path: room1, room3, laybed, sew,
+%
+name: sew
+prompt: Sewing machine
+description: You mosey on over to the sewing machine. You have no idea how to work it, but it looks like the owner is halfway through making a new piece. Some of the material feels tough like leather, but you've never really worked with animal hide before so you have nothing to base your knowledge on here.
+path: room1, room3, laybed, underbed,
+%
+name: room3
+prompt: Dining Room
+description: You are in the dining room. The table is empty and pictures of fruit line the walls.
+path: room4, room2, cabinets, kitchendoor, backhouse2,
+%
+name: room3-2
+prompt: Enter house
+description: You enter through the window, now in the cabin's dining room. The dining table is empty. 
+path: room4, room2, backhouse2, 
+%
+name: cabinets
+prompt: Inspect cabinets
+description: There are some papers in the drawers here. 
+path: leftpaper, rightpaper, wallet, room3,
+%
+name: leftpaper
+prompt: Letter
+description: There is a letter here addressed to a Maggie Lavery.
+path: leftpaper2, rightpaper, wallet, room3,
+%
+name: leftpaper2
+prompt: Read letter
+description: You open the letter, ignoring the warnings from your past that tampering with mail is a federal offense. "Mrs. Lavery, we regret to inform you... your husband, Bill... car accident..."  Wow, poor woman.
+path: rightpaper, wallet, room3,
+%
+name: rightpaper
+prompt: Receipt
+description: It's a receipt from a local hardware store for some equipment. There's an axe and a saw listed among other things. 
+path: leftpaper, wallet, room3,
+%
+name: wallet
+prompt: Inspect wallet
+description: It's empty. No money, no ID, no pictures.
+path: leftpaper, rightpaper, room3, 
+%
+name: kitchendoor
+prompt: Inspect door
+description: Walking up to the door, which you presume to be the kitchen, you hear a humming on the other side as a woman chops something. 
+chance: 100
+event: You know that, once you make your presence known, you won't be able to investigate the house anymore. You consider if you're content with what you've gotten to do so far.
+path: kitchen, room3,
+%
+name: room4
+prompt: Bathroom
+description: You're in the bathroom. You had honestly expected an outhouse due to the location. 
+path: room1, room3, medcabinet, tub, toilet,
+%
+name: toilet
+prompt: Inspect the toilet?
+description: Relatively clean. Go figure.
+path: room1, room3, medcabinet, tub,
+%
+name: medcabinet
+prompt: Open medicine cabinet
+description: You open the mirrored cabinet
+chance: 30
+event: Upon closing the cabinet, you see a slender humanoid figure in the back of the room. You reactively swing around to look backward, but nothing is there. 
+change: -1
+path: room1, room3, tub,  toilet,
+%
+name: tub
+prompt: Inspect bathtub
+description: Looking into the tub, it's seen better days. There is a grimy film over the base and it doesn't look like it has been used in a while. 
+path: room1, room3, medcabinet, toilet,
+%
+name: kitchen
+prompt: Enter the kitchen
+description: You open the door to see an old woman happily chopping some carrots. Facing the other direction, she doesn't seem to take notice of you yet.
+path: hello1, hello2, hello3,
+%
+name: hello1
+prompt: Keep watching
+description: After finishing her chopping, she proceeds to push the vegetables into a pot full of stew to her side, and grabs a potato to begin slicing as well. 
+path: hello2, hello3,
+%
+name: hello2
+prompt: "Hello?"
+description: You address the woman, and she perks her head at the noise. She turns around to see you with an inquisitive look, but her face quickly shifts into a pleasant smile. "Oh, hello deary! I wasn't expecting guests today, but I'm making enough stew for ten if you'd like to join!"
+path: accept, refuse,
+%
+name: hello3
+prompt: "Ma'am?"
+description: She perks her head up at the sound. The woman turns around quickly, knife by her side, but as soon as she registers you, she visibly relaxes and adorns a soft smile. "Oh, hello deary! I wasn't expecting guests today, but I'm making enough stew for ten if you'd like to join!"
+path: accept, refuse,
+%
+name: accept
+prompt: Accept
+description: You gratefully accept her offer, and she points you to a small kitchen table where you sit in anticipation.
+path: truth1, truth2,
+%
+name: refuse
+prompt: Refuse
+description: You respectfully refuse her offer. "Oh, nonsense dear, you look absolutely famished!" she replies. She practically forces you toward a small kitchen table. 
+path: truth1, truth2,
+%
+name: truth1
+prompt: "I was in a wreck"
+description: You begin to tell the woman about your accident, but she cuts you off. "Oh my, deary, you've been through quite a rough patch! Let Mrs. Lavery fix everything with her stew, it will calm your terrible nerves." Having poured a bowl, she sets the stew in front of you on the table.
+path: ingredients1, ingredients2,
+%
+name: truth2
+prompt: "I need to use your phone"
+description: "No phones here, deary. Never saw the need for them. Tell you what, after we have some stew, Mrs. Lavery will take you out to town to get everything fixed up!" Having poured a bowl, she sets the stew in front of you on the table.
+path: ingredients1, ingredients2,
+%
+name: ingredients1
+prompt: "What's in the stew?"
+description: She brings over a bowl of her own and sits down at the table opposite you. "Oh, it's my special recipe, deary! I'm sure you'll just love it," she says with a seemingly sincere smile. 
+chance: 100
+event: There's an expectant glimmer in her eyes. You want to believe this is just a friendly old woman. You really want to.
+path: eatstew, donteat,
+%
+name: ingredients2
+prompt: "Why do you live out here?"
+description: She brings over a bowl of her own and sits down at the table opposite you. "Well, dear, my husband and I used to make our lives out here, but now it's just me and I suppose I never really wanted to go back to the bustle of the city," she says with a seemingly sincere smile. "Now go and eat up your stew, deary. I know you'll love it."
+chance: 100
+event: There's an expectant glimmer in her eyes. You want to believe this is just a friendly old widow. You really want to.
+path: eatstew, donteat,
+%
+name: eatstew
+prompt: Eat stew
+description: Hoping you've found sanctuary from the wilderness, you let your fears dissipate as you eat the stew given to you.
+chance: 100
+event: It's... actually quite good! Maybe it's because you're so hungry, but you can't quite put your finger on what kind of meat she used. 
+change: 20
+path: compliment, ingredients4,
+%
+name: donteat
+prompt: Don't eat
+description: You eye the stew warily, something urging you not to partake in this meal. You comply. 
+path: thanks, ingredients3,
+%
+name: compliment
+prompt: Compliment the cook
+description: You offer your sincere compliments over the quality of your food. She seems elated. "Oh, I knew you would love it! But really, you should be thanking Bill."
+path: bill2,
+%
+name: ingredients3
+prompt: Ask about stew
+description: You ask her directly over the contents of the stew. "Well, deary, a little of this and a little of that. It's my own personal recipe, but I should give some credit to Bill as well."
+path: bill,
+%
+name: ingredients4
+prompt: Ask about ingredients
+description: You ask her directly over the contents of the stew. "Well, deary, a little of this and a little of that. It's my own personal recipe, but I should give some credit to Bill as well."
+path: bill2,
+% 
+name: thanks
+prompt: Refuse stew
+description: You thank her, but refuse the delicious-smelling meal in front of you. Her eyes seem disappointed. "That's too bad, deary. Don't worry, I don't take offense, but you might have hurt Bill's feelings."
+path: bill,
+%
+name: bill
+prompt: Bill?
+description: "Oh yes, Bill was my inspiration behind this stew! I really put his all into it... I mean, he really put his all into it."
+chance: 100
+event: ...well then. You're suddenly very glad you didn't eat anything.
+path: wellthen,
+%
+name: bill2
+prompt: Bill?
+description: "Oh yes, Bill was my inspiration behind this stew! I really put his all into it... I mean, he really put his all into it."
+chance: 100
+event: ...oh...you just...
+change: -2
+path: wellthen,
+%
+name: wellthen
+prompt: "Excuse me..."
+description: You get up to excuse yourself to use the bathroom. The woman keeps her smile as you get up to exit the kitchen. You calmly make your way back into the dining room.
+chance: 100
+event: Okay, it's definitely time to leave. As soon as possible. 
+path: zbackwindow, zbackdoor, zroom2, zroom4,
+%
+name: zroom3
+prompt: Leave kitchen
+description: Okay, you think it's definitely time to leave. As soon as possible. You run into the dining room.
+path: zbackwindow, zbackdoor, zroom2, zroom4,
+%
+name: zroom3-2
+prompt: Dining room
+description: Back in the dining room. But how to get out?
+path: zbackwindow, zbackdoor, zroom2, zroom4,
+%
+name: zbackwindow
+prompt: Open back window
+description: It won't budge!
+path: zbackdoor, zroom2, zroom4,
+%
+name: zbackdoor
+prompt: Open back door
+description: It won't budge!
+path: zbackwindow, zroom2, zroom4,
+%
+name: zroom4
+prompt: Bathroom
+description: Back in the bathroom. There's no exit to the outside available from here.
+path: zroom3-2, zroom1,
+%
+name: zroom1
+prompt: Living room
+description: Back in the living room.
+path: zradio, zfrontdoor, zfrontwindow, zroom2, zroom4,
+%
+name: zradio
+prompt: Use radio
+description: There's no time for that!
+path: zfrontdoor, zfrontwindow, zroom2, zroom4,
+%
+name: zfrontdoor
+prompt: Open front door
+description: It just refuses to open!
+path: zfrontwindow, zradio, zroom2, zroom4,
+%
+name: zfrontwindow
+prompt: Open front window
+description: It's barred, you can't get through!
+path: zfrontdoor, zradio, zroom2, zroom4,
+%
+name: zroom2
+prompt: Bedroom
+description: Back in the bedroom. There's no exit to the outside from here!
+path: zsew, zlaybed, zunderbed, zroom3-2, zroom1,
+%
+name: zsew
+prompt: Sewing machine
+description: The leathery material on the machine is definitely from an animal. But... what species?
+path: zlaybed, zunderbed, zroom3-2, zroom1,
+%
+name: zlaybed
+prompt: Lay on bed
+description: You desperately wish you were in a place where you could rest, but unfortunately, now is not the time.
+path: zsew, zunderbed, zroom3-2, zroom1,
+%
+name: zunderbed
+prompt: Under bed
+description: Under the bed is a hatch leading to the basement. You don't know if this is such a good idea. 
+path: zsew, zlaybed, zroom3-2, zroom1, basement,
+%
+name: basement
+prompt: Enter basement
+description: You push the bed to the side of the room, allowing enough room to open the hatch. It complies, and you squeeze through as you carefully run down the stairs and close it behind you.
+chance: 100
+event: Light emanates from a furnace in the corner. You realize you had not seen the source of the chimney smoke on the main floor. 
+path: basement2,
+%
+name: basement2
+prompt: View surroundings
+description: Jars line the wall. The furnace burns brightly to the right, and an old-timey icebox is on the left. There is a window near the top of the back wall leading to the surface.
+path: furnace, jars, icebox, bmwindow,
+%
+name: bmwindow
+prompt: Inspect window
+description: The window is too small for you to fit through. Freedom is just on the other side of the glass, but you can't attain it.
+path: basement2, furnace, jars, icebox,
+%
+name: furnace
+prompt: Inspect furnace
+description: You feel the heat intensely as you approach the flame. Opening the front latch reveals a strong flame over wood and ash, but little else.
+chance: 50
+event: Embers fly from the furnace onto your shirt; you bat it away before it can do any damage.
+max: 1
+path: basement2, jars, icebox, bmwindow,
+%
+name: jars
+prompt: View jars
+description: You see a rack filled with spices and ingredients. Some you don't quite know, and seem somehow insidious in nature. 
+path: basement2, furnace, icebox, bmwindow,
+%
+name: icebox
+prompt: View icebox
+description: It's very old-fashioned, and makes sense considering the lack of electricity. 
+path: basement2, furnace, icebox2, bmwindow,
+%
+name: icebox2
+prompt: Open icebox
+description: You undo the latch and open the lid of the icebox. There appears to be a layer of packaged meat on top.
+path: basement2, furnace, icebox3, bmwindow,
+%
+name: icebox3
+prompt: Dig deeper
+description: You push aside the meat, to find more meat. But you continue out of curiosity, and grab onto something silky. You push aside the surrounding meat to see a woman's face, frozen in a slumber-like visual. It can't be... it's the same woman from the kitchen!
+chance: 100
+event: A slam of the basement door is audible from behind. 
+path: basement3,
+%
+name: basement3
+prompt: Turn around
+description: You're face to face with the cabin's other occupant. "Oh deary me, you weren't suppose to see that," she utters with a smile still on her face. 
+path: who, what,
+%
+name: who
+prompt: "Who is she?"
+description: She replies, "Poor Maggie. She used to live, before me. But when she left, there was so much to be done! So I saw no other choice than to take her spot."
+path: who2, what2,
+%
+name: what
+prompt: "What did you do to her?"
+description: She replies, "Me? I did nothing, dear. The poor girl was so distraught over the loss of her dear Bill that she did all the work for me. I'm just minding my own business here."
+path: who2, what2,
+%
+name: who2
+prompt: "Who are you?"
+description: She replies, "Is that really the question you think you should be asking, dear?" Her smile widens more than you thought possible. 
+path: letme, please,
+%
+name: what2
+prompt: "What are you?"
+description: Her smile widens more than you imagined humanly possible. "Do you really want to know, dear?"
+path: letme, please,
+%
+name: letme
+prompt: "Let me leave."
+description: "So brash! Maybe if you said the magic word I would have, but it's obvious your mother raised a bad egg."
+chance: 100
+event: You see a change in her stance and manage to jump out of the way as she leaps toward your previous position. You bang into the jar rack and look up to see her changed: Humanlike, but obviously not what she is pretending to be.
+path: mushrooms, throwflowers, salt, 
+%
+name: please
+prompt: "Please, let me leave."
+description: "Oh, you're so polite, dear! But I'm afraid you know too much."
+chance: 100
+event: You see a change in her stance and manage to jump out of the way as she leaps toward your previous position. You bang into the jar rack and look up to see her changed: Humanlike, but obviously not what she is pretending to be.
+path: mushrooms, throwflowers, salt, 
+%
+name: mushrooms
+prompt: Throw mushrooms
+description: You grab a nearby jar full of mushrooms, open it, and toss the contents onto the monster. They bounce harmlessly off. 
+chance: 70
+event: The monster swipes her cleaver at you; you do your best to avoid the assault but fail to block all the damage.
+change: -30
+path: throwflowers, salt,
+%
+name: throwflowers
+prompt: Throw petals
+description: You grab a jar of flower petals from the rack, hoping that this is a case where the monster is weak to objects its opposite in nature. You throw the petals in her face, and they fall to the floor harmlessly.
+chance: 70
+event: The monster swipes her cleaver at you; you do your best to avoid the assault but fail to block all the damage.
+change: -30
+path: mushrooms, salt,
+%
+name: salt
+prompt: Throw salt
+description: You grab a jar full of salt from the rack, open it, and toss the contents into the monster's face. She swings wildly, knocking open the furnace door.
+chance: 100
+event: She recoils, blinded. It worked!
+path: tossfurnace, bmexit,
+%
+name: bmexit
+prompt: Run to basement exit
+description: Seeing an opportunity, you run toward the hatch back to the house's main floor. 
+chance: 100
+event: However, as you are climbing the stairs, something grasps your ankle, and then you feel yourself being tossed backward to the other side of the area, where your back takes the brunt of the impact against the jar rack.
+change: -30
+path: mushrooms, throwflowers, salt,
+%
+name: tossfurnace
+prompt: If you can't take the heat...
+description: Seizing your opportunity, you roll behind the blinded creature and shove her into the open flame. 
+chance: 100
+event: The creature lets out an otherworldly screech as the flames engulf it.
+path: closefurnace, winstate2,
+%
+name: closefurnace
+prompt: Slam the furnace door
+description: You shut the beast in, ensuring the heat purges the evil from the cabin.
+path: winstate2,
+%
+name: winstate2
+prompt: Leave the cabin
+description: Not being able to stand a night in this cabin after what you just endured, you take your chances out in the elements as you head toward what you hope is civilization. 
+chance: 100
+win: 1
+%
+name: winstate
+prompt: Wake up
+description: You open your eyes, still in the forest. You see that it's morning by the rim of the sun peeking over a distant mountaintop. You've survived the day and decide to continue toward what you hope is civilization. 
+chance: 100
+win: 1
+
