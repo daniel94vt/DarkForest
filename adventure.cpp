@@ -9,9 +9,9 @@
 using namespace std;
 
 // Global variables
-Action actions[300];
+Action actions[250];
 int numactions = 0;
-int cur = 0, health = 100, sanity = 10;
+int cur = 0, health = 100, sanity = 5;
 string username = "Stranger";
 
 // Function prototypes
@@ -68,7 +68,7 @@ void filein(char* gamefile)
 				stringstream endconvert(end);
 				endconvert >> endint;
 			
-				// The new string is passed directly into functions that set string objects of the class. Otherwise, stoi converts to integer first.
+				// The data string or int is passed directly into the function indicated by the key string
 				if (start == "name") 
 					actions[numactions].setname(end); 
 				else if (start == "prompt") 
@@ -88,7 +88,6 @@ void filein(char* gamefile)
 			}
 			// Track number of areas taken from the input file
 			numactions++;
-			//cout << endl << actions[numactions-1].getname();
 		}
 		gametext.close();
 	}
@@ -107,7 +106,7 @@ int playerChoice()
 		for (int i = 0; i < numpath; i++)
 		{
 			if (i == 0)
-			    cout << "a. ";
+				cout << "a. ";
 			else if (i == 1)
 				cout << "b. ";
 			else if (i == 2)
@@ -135,9 +134,9 @@ int playerChoice()
 		if (path == "a" || path == "A")
 			choice = 0;
 		else if ((path == "b" || path == "B") && numpath > 1)
-				choice = 1;
+			choice = 1;
 		else if ((path == "c" || path == "C") && numpath > 2)
-				choice = 2;
+			choice = 2;
 		else if ((path == "d" || path == "D") && numpath > 3)
 			choice = 3;
 		else if ((path == "e" || path == "E") && numpath > 4)
@@ -177,6 +176,7 @@ void printcurrent(int eventenable)
 			sanity += effect;
 	}
 
+	// Maximum health cannot exceed 100.
 	if (health > 100)
 		health = 100;
 	else if (health <= 0)
@@ -236,7 +236,7 @@ int main()
 	// Hugs
 	while (startgame == "Hug" || startgame == "hug")
 	{
-		cout << "I heart " << username << "! <(^-^)>\n";
+		cout << "I <3 " << username << "! <(^-^)>\n";
 		cin >> startgame;
 	}
 
@@ -255,7 +255,7 @@ int main()
 			if (next == actions[i].getname())
 			{
 				cur = i;
-			    break;
+				break;
 			}
 		}
 	}
