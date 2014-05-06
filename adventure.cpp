@@ -165,6 +165,8 @@ int playerChoice()
 void printcurrent(int eventenable)
 {
 	int effect;
+	int prevhp = health;
+	int prevsan = sanity;
 
 	clearscr();
 	cout << "z: Exit       h: Help \n-------------------------------------------------\n";
@@ -197,10 +199,16 @@ void printcurrent(int eventenable)
 	if (sanity <= 0)
 	{
 		cout << "\n\n** The wilderness has driven you crazy. You have lost your mind and cannot continue.\n\n";
-	    exit(0);
+		exit(0);
 	}
 
-	cout << "\n\nHealth: " << health << "     Sanity: " << sanity << "\n";
+	if (prevhp != health)
+		cout << "\n\nHealth: " << health << " <" << health-prevhp << ">     Sanity: " << sanity << "\n";
+	else if (prevsan != sanity)
+		cout << "\n\nHealth: " << health << "     Sanity: " << sanity << " <" << sanity-prevsan << ">\n";
+	else
+		cout << "\n\nHealth: " << health << "     Sanity: " << sanity << "\n";
+
 	cout << "-------------------------------------------------- \n" << username << ", choose your path: \n";
 }
 

@@ -36,7 +36,7 @@ name: opendoor2
 prompt: Open door
 description: Not thinking, you grab the handle to the driver side door. You attempt to open it but the force outside is superior to your own.
 chance: 50
-event: Water seeps in through the seam around the door. Not good! <-1 Sanity> 
+event: Water seeps in through the seam around the door. Not good! 
 change: -1
 max: 1
 path: panic, calm,
@@ -45,7 +45,7 @@ name: panic
 prompt: Panic!
 description: After your predicament dawns on you, you proceed to freak out.
 chance: 100
-event: That is neither helping your state of mind nor getting you anywhere. <-1 Sanity>
+event: That is neither helping your state of mind nor getting you anywhere.
 change: -1
 max: 5
 path: opendoor2, windshield2, panic,
@@ -59,7 +59,7 @@ name: winbash
 prompt: Bash window
 description: You bang your fists against the front windshield to no avail. This is industrial strength material you're facing.
 chance: 50
-event: So much for remaining calm.  <-1 Sanity>
+event: So much for remaining calm.
 change: -1
 max: 1
 path: glovebox, backseat, winbash, underseat,
@@ -85,7 +85,7 @@ name: underseat2
 prompt: Check under seat
 description: It looks like the hammer was all that was down there. Nothing left but some crumbs.
 chance: 20
-event: ...and a rather provocative magazine. This isn't the time for that.  <+1 Sanity>
+event: ...and a rather provocative magazine. This isn't the time for that.
 change: 1
 max: 1
 path: glovebox2, winbreak, backseat2, holdbreath,
@@ -109,7 +109,7 @@ name: winbreak
 prompt: Break window
 description: Mustering up your strength, you shatter the window, and water rushes in.
 chance: 50
-event: The shards of glass from the window manage to knick you as the force of the water surges into the car.  <-10 Health>
+event: The shards of glass from the window manage to knick you as the force of the water surges into the car.
 change: -10
 path: swim,
 %
@@ -117,7 +117,7 @@ name: winbreak2
 prompt: Break window
 description: Mustering up your strength, you shatter the window, and water rushes in. 
 chance: 50
-event: The shards of glass from the window manage to knick you as the force of the water surges into the car.  <-10 Health>
+event: The shards of glass from the window manage to knick you as the force of the water surges into the car.
 change: -10
 path: swim3,
 %
@@ -135,7 +135,7 @@ name: swim2
 prompt: Up! Up!
 description: You push further up, aiming for the light shining above the surface of your would-be watery tomb.
 chance: 100
-event: Oh no, you weren't prepared for this distance! You gasp for air, but there's none to be found.  <-10 Health>
+event: Oh no, you weren't prepared for this distance! You gasp for air, but there's none to be found.
 change: -10
 path: surface,
 %
@@ -163,7 +163,7 @@ name: inspectwreckage
 prompt: Inspect the wreckage
 description: One of the pieces of debris catches your eye. You lean down and pick it up. A hand-knit doll with button eyes returns your gaze. Was this even yours?
 chance: 50
-event: You jump as the water in front of you bubbles. You sigh as you realize that it must just have been trapped air from the vehicle. At least, you hope it is.  <-1 Sanity>
+event: You jump as the water in front of you bubbles. You sigh as you realize that it must just have been trapped air from the vehicle. At least, you hope it is.
 change: -1
 path: surface2,
 %
@@ -171,7 +171,7 @@ name: forest
 prompt: Forest entrance
 description: You are in the forest. A large oak dominates the scenery. You hear a babbling brook somewhere to the east.
 chance: 20
-event: A wild mountain lion attacks! Though you managed to scare it off, you[ve suffered a wound to the chest. <-30 Health>
+event: A wild mountain lion attacks! Though you managed to scare it off, you[ve suffered a wound to the chest.
 change: -30
 max: 1
 path: tree, creek,
@@ -180,7 +180,7 @@ name: tree
 prompt: Tree
 description: You walk over to the behemoth oak. You peer inside its hollow to find a baby owl, and little else. You are forced to squint as sunlight reflects off of something on an upper branch.
 chance: 10
-event: A monkey eyes you warily. You approach cautiously, and he hands you a banana. Not wanting to insult him, you eat it.  <+20 Health>
+event: A monkey eyes you warily. You approach cautiously, and he hands you a banana. Not wanting to insult him, you eat it.
 change: 20
 max: 1
 path: forest, climb,
@@ -194,7 +194,7 @@ name: forest3
 prompt: Right Branch
 description: Holding your breath, you make your leap.
 chance: 100
-event: However, it proves too far a jump to make, resulting in you plummeting to the ground below with a solid thud.  <-30 Health>
+event: However, it proves too far a jump to make, resulting in you plummeting to the ground below with a solid thud.
 change: -30
 path: creek,
 %
@@ -231,15 +231,15 @@ name: drink
 prompt: Drink
 description: You relax as the crystal clear water eases your weariness.
 chance: 100
-event: <+10 Health>
+event: Aaaaahhhhhh...
 change: 10
 path: forest, midstream, drink2,
 %
 name: drink2
 prompt: Continue drinking
-description: Not satisfied, you continue. It's still just as good!
+description: Not satisfied, you continue.
 chance: 100
-event: <+5 Health>
+event: It's still just as good!
 change: 5
 path: forest, midstream, drink2,
 %
@@ -252,7 +252,7 @@ name: clearing
 prompt: Enter the clearing
 description: You enter the sunny opening and bask in the warmth. 
 chance: 100
-event: You have to admit, this feels wonderful, but it's really not the time or place.  <+1 Sanity>
+event: You have to admit, this feels wonderful, but it's really not the time or place.
 change: 1
 max: 1
 path: clearing2, midstream,
@@ -291,9 +291,9 @@ path: upstream2, peripheral, ravineexit,
 %
 name: peripheral
 prompt: Inspect further
-description: Letting curiosity get the better of you, you decide to follow up to see if what you saw was real or simply a trick of the mind. You walk over to an alcove in the side of the ravine, but it is much too dark to see inside. Still, you can't help but think that, despite your inability to see, something else is watching you.
+description: Letting curiosity get the better of you, you decide to follow up to see if what you saw was real or simply a trick of the mind. You walk over to an alcove in the side of the ravine, but it is much too dark to see inside.
 chance: 100
-event: <-1 Sanity>
+event: Still, you can't help but think that, despite your inability to see, something else is watching you.
 change: -1
 path: upstream2, ravineexit,
 %
@@ -316,7 +316,7 @@ name: ravineexit2
 prompt: RUN!
 description: Your heart races as you break into the lit clearing at the end of the cavernous ravine. The path now branches to either side of you... the only other option is back.
 chance: 100
-event: But hey, you made it!  <+1 Sanity>
+event: But hey, you made it!
 change: 1
 path: leftsmoke4, rightsmoke4, lookback,
 %
@@ -331,7 +331,7 @@ name: hills
 prompt: Hills
 description: Acting with caution, you take the high ground in hopes that the extra effort will be worth avoiding the risk of being trapped. Climbing the hill rewards you with a scenic overview of the forest... it is big. You see two plumes of smoke, one to the right and one to the left
 chance: 30
-event: A bird flies overhead and drops a... present... on your shoulder. Just what your day needed.  <-1 Sanity>
+event: A bird flies overhead and drops a... present... on your shoulder. Just what your day needed.
 change: -1
 max: 1
 path: rightsmoke, leftsmoke, upstream2,
@@ -406,7 +406,7 @@ name: flowers
 prompt: Look at flowers
 description: The flowers growing here seem oddly well-kept, like someone has visited recently.
 chance: 60
-event: You reach down to pick one up, and recoil as you feel a sting. The stems are covered in thorns  <-5 Health>
+event: You reach down to pick one up, and recoil as you feel a sting. The stems are covered in thorns.
 change: -5
 max: 1
 path: mound, bark, child3, clearingexit,
@@ -435,7 +435,7 @@ name: rightsmoke4
 prompt: To the right
 description: You travel along the dimly lit path. Suddenly, you lose your footing. You attempt to grab something to right yourself, but nothing is within reach save leaves and mud as you tumble downward.
 chance: 100
-event: Following a rough landing, you pick yourself up by the britches and take in your new surroundings.  <-10 Health>
+event: Following a rough landing, you pick yourself up by the britches and take in your new surroundings.
 change: -10
 path: pit,
 %
@@ -453,7 +453,7 @@ name: climbwall
 prompt: Try anyway
 description: Using your muscle memory from high school gym class, you take things one arm or leg at a time as you pull yourself up the slope.
 chance: 100
-event: ...but it's not good enough. You slip and slide back down to the pit, slightly dirtier and in lower spirits than before.  <-1 Sanity>
+event: ...but it's not good enough. You slip and slide back down to the pit, slightly dirtier and in lower spirits than before.
 change: -1
 path: cave1,
 %
@@ -569,7 +569,7 @@ name: checkleft
 prompt: Check left wall
 description: It's rock solid.
 chance: 50
-event: While moving your hands over the surface, you feel a sting. You retract your hand to see a bite mark puffing up. Returning your gaze to the wall, you can't spot the offender of the crime.  <+10 Health>
+event: While moving your hands over the surface, you feel a sting. You retract your hand to see a bite mark puffing up. Returning your gaze to the wall, you can't spot the offender of the crime.
 change: -10
 max: 1
 path: floor4, checkright, checkfront, cave3-2,
@@ -578,7 +578,7 @@ name: checkright
 prompt: Check right wall
 description: It's rock solid.
 chance: 30
-event: You see a spider. And you smush it. Victory!  <+1 Sanity>
+event: You see a spider. And you smush it. Victory!
 change: 1
 max: 1
 path: floor4, checkleft, checkfront, cave3-2,
@@ -685,7 +685,7 @@ name: checkfront2
 prompt: Inspect the closed door
 description: There is no dial on this side. The wall is solid stone, much too heavy for you to move back into position.
 chance: 100
-event: Do you even lift?  <-1 Sanity>
+event: Do you even lift?
 change: -1
 max: 1
 path: morecave2,
@@ -704,7 +704,7 @@ name: blackness
 prompt: Inspect the tunnel
 description: You move toward the darkened tunnel. Maybe you should check around the room some more before trying to navigate it on your own. 
 chance: 50
-event: You get that feeling that you aren't alone, the hairs of your neck creeping up. You push the thoughts away as you move back into the room.  <-1 Sanity>
+event: You get that feeling that you aren't alone, the hairs of your neck creeping up. You push the thoughts away as you move back into the room.
 change: -1
 max: 1
 path: drawings4, tablet, pool, checkfront2,
@@ -718,7 +718,7 @@ name: drinkpool
 prompt: Drink the water
 description: Thirstily, you dip your hands into the water and take a gulp. 
 chance: 100
-event: Bleck! This can hardly be called water! You feel your stomach immediately becoming upset.  <+5 Health>
+event: Bleck! This can hardly be called water! You feel your stomach immediately becoming upset.
 change: -5
 path: drawings4, tablet, checkfront2, blackness,
 %
@@ -906,7 +906,7 @@ name: chop
 prompt: Chop wood
 description: You place firewood on the stump and take a hefty swing of your axe, splitting the log in two.
 chance: 100
-event: That felt good. Your perception of your chances out here has increased.  <+1 Sanity>
+event: That felt good. Your perception of your chances out here has increased.
 change: 1
 max: 1
 path: fronthouse, backhouse, stump, chop,
@@ -1013,7 +1013,7 @@ name: radio2
 prompt: 101.2
 description: You change the frequency. You can hear a country song behind the static. The gruff man in singing of a lost lover.
 chance: 50
-event: Dang, they say that those who listen to country are the saddest types of people, and this definitely serves as proof.  <-1 Sanity>
+event: Dang, they say that those who listen to country are the saddest types of people, and this definitely serves as proof.
 change: -1
 max: 1
 path: radiooff, radio3, radio4, radio5,
@@ -1022,7 +1022,7 @@ name: radio3
 prompt: 104.6
 description: You change the frequency. Instantly, you recognize the singer as Elvis.
 chance: 100
-event: Hail to the King, baby.  <+1 Sanity>
+event: Hail to the King, baby.
 change: 1
 max: 1
 path: radiooff, radio2, radio4, radio5,
@@ -1052,7 +1052,7 @@ name: laybed
 prompt: Lay on the bed
 description: Aaaaahhhhh... Bliss.
 chance: 100
-event: You feel rejuvenated.  <+20 Health>
+event: You feel rejuvenated.
 change: 20
 max: 1
 path: room1, room3, underbed, sew,
@@ -1126,7 +1126,7 @@ name: medcabinet
 prompt: Open medicine cabinet
 description: You open the mirrored cabinet
 chance: 30
-event: Upon closing the cabinet, you see a slender humanoid figure in the back of the room. You reactively swing around to look backward, but nothing is there.  <+1 Sanity>
+event: Upon closing the cabinet, you see a slender humanoid figure in the back of the room. You reactively swing around to look backward, but nothing is there.
 change: -1
 path: room1, room3, tub,  toilet,
 %
@@ -1193,7 +1193,7 @@ name: eatstew
 prompt: Eat stew
 description: Hoping you've found sanctuary from the wilderness, you let your fears dissipate as you eat the stew given to you.
 chance: 100
-event: It's... actually quite good! Maybe it's because you're so hungry, but you can't quite put your finger on what kind of meat she used.   <+20 Health>
+event: It's... actually quite good! Maybe it's because you're so hungry, but you can't quite put your finger on what kind of meat she used.
 change: 20
 path: compliment, ingredients4,
 %
@@ -1233,7 +1233,7 @@ name: bill2
 prompt: Bill?
 description: "Oh yes, Bill was my inspiration behind this stew! I really put his all into it... I mean, he really put his all into it."
 chance: 100
-event: ...oh...you just...   <-2 Sanity>
+event: ...oh...you just...
 change: -2
 path: wellthen,
 %
@@ -1399,7 +1399,7 @@ name: mushrooms
 prompt: Throw mushrooms
 description: You grab a nearby jar full of mushrooms, open it, and toss the contents onto the monster. They bounce harmlessly off. 
 chance: 70
-event: The monster swipes her cleaver at you; you do your best to avoid the assault but fail to block all the damage.  <-30 Health>
+event: The monster swipes her cleaver at you; you do your best to avoid the assault but fail to block all the damage.
 change: -30
 path: throwflowers, salt,
 %
@@ -1407,7 +1407,7 @@ name: throwflowers
 prompt: Throw petals
 description: You grab a jar of flower petals from the rack, hoping that this is a case where the monster is weak to objects its opposite in nature. You throw the petals in her face, and they fall to the floor harmlessly.
 chance: 70
-event: The monster swipes her cleaver at you; you do your best to avoid the assault but fail to block all the damage.  <-30 Health>
+event: The monster swipes her cleaver at you; you do your best to avoid the assault but fail to block all the damage.
 change: -30
 path: mushrooms, salt,
 %

@@ -8,7 +8,7 @@ URL: https://github.com/stryder25/DarkForest
 Project Summary:
 ----------------
 
-This project will involve a Qt interface that saves username and password information, and it will connect the user to a text-based story-driven adventure game with branching paths. Players will choose their fate as they avoid losing both their health and sanity while navigating a lethal, supernatural forest setting.
+This project will involve a Qt interface that saves username and password information, and it will connect the user to a text-based story-driven adventure game with branching paths. Players will choose their fate as they avoid losing both their health and sanity while navigating a lethal, supernatural forest setting. The branching nature of the game means at least two playthroughs are required to experience all major portions of the game.
 
 How to Play:
 ------------
@@ -18,6 +18,8 @@ __$ make
 $ ./Forest__
 
 To play the game, enter the single alphabetical character (a-e) marking the start of your desired next path. Enter 'z' to exit the game, enter 'h' for help. If an invalid entry is given, you will be notified and then return to the previous screen without any negative effect. 
+
+Stay aware of your health and sanity levels throughout the game. If eithe reaches zero, you lose the game. There are also instant-death paths to look out for; be aware of your surroundings and pay attention to environmental clues. 
 
 *(Protip: Accept some hugs into your life at the welcome screen for additional starting stats)*
 
