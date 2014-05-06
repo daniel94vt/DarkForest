@@ -11,7 +11,7 @@ using namespace std;
 // Global variables
 Action actions[250];
 int numactions = 0;
-int cur = 0, health = 100, sanity = 5;
+int cur = 0, health = 50, sanity = 5;
 string username = "Stranger";
 
 // Function prototypes
@@ -179,6 +179,8 @@ void printcurrent(int eventenable)
 	// Maximum health cannot exceed 100.
 	if (health > 100)
 		health = 100;
+	if (sanity > 10)
+		sanity = 10;
 	else if (health <= 0)
 	{
 		cout << "\n\n** Your health has been depleted. Your adventure has prematurely come to its end.\n\n";
@@ -237,6 +239,8 @@ int main()
 	while (startgame == "Hug" || startgame == "hug")
 	{
 		cout << "I <3 " << username << "! <(^-^)>\n";
+                sanity++;
+		health += 10;
 		cin >> startgame;
 	}
 
