@@ -6,6 +6,19 @@
 #include <cstdlib>
 using namespace std;
 
+/*
+ Defines an action class wherein each object has attributes:
+	Name: Title of object for easier bookkeeping
+	Prompt: String output to player to detail nature of the path
+	Description: String output if the object is the current action, describes action or surroundings
+	Chance: Possibility of event to occur
+	Eventstr: String output if the event happens
+	Alteration: Change made to health or sanity due to event
+	Numpaths: Number of other actions this object points to
+	Numevents: Maximum number of events that can occur in a single game at this particular action
+	Winlose: Indicates winstate and program exit
+	Paths[5]: Array of actions pointed to by current object
+*/
 class Action
 {
 private:
@@ -37,7 +50,7 @@ public:
 	string getdescr(void);
 	string getpath(int chosenpath);
 	int getnumpaths(void);
-	int itshappening(void);
+	int itshappening(void);             // Determines if event will happen and processes if true
 };
 
 #endif

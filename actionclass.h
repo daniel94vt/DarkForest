@@ -3,6 +3,9 @@
 #ifndef ACTIONCLASS_H
 #define ACTIONCLASS_H
 
+// Constructor: Initializes default values for all action variables
+// chance set to zero so events will not occur unless explicitly set.
+// numevents initialized to -1 to indicate infinite events possible for this action
 Action :: Action()
 {
 	name = "";
@@ -40,6 +43,7 @@ void Action :: setalt(int change)
 void Action :: eventlimit(int setlimit)
 { numevents = setlimit; }
 
+// Add new action name within the array of paths in the current object
 void Action :: addpath(string newpath)
 {
     paths[numpaths] = newpath;
@@ -65,6 +69,8 @@ string Action :: getpath(int chosenpath)
 int Action :: getnumpaths()
 { return numpaths; }
 
+// Creates random number to compare to event chance to determine if the event occurs
+// Returns the health/sanity alteration if it is processed, and decrements the remaining events if they are set as finite
 int Action :: itshappening(void)
 {
 	int rollthedice;
@@ -78,11 +84,6 @@ int Action :: itshappening(void)
 			if (winlose == 1)
 			{
 				cout << "\n\n\nCongratulations, you win!\n\n";
-				exit(0);
-			}
-			else if (winlose == -1)
-			{
-				cout << "\n\n\nYour adventure has come to its end.\n\n";
 				exit(0);
 			}
 
