@@ -1,9 +1,11 @@
-edit: adventure.o
-	cc -o edit adventure.o
+CXX=g++
 
-adventure.o: adventure.cpp action.h actionclass.h
-	cc -c adventure.cpp
+Forest: adventure.o
+	${CXX} -o Forest $<
+
+adventure.o: adventure.cpp actionclass.h action.h
+	${CXX} -c -o $@ $<
 
 .PHONY: clean
 clean:
-	rm edit adventure.o
+	rm Forest adventure.o
