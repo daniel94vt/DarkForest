@@ -19,6 +19,14 @@ void filein(char* gamefile);
 int playerChoice(void);
 void printcurrent(int eventenable);
 void notification(int helpint);
+void clearscr(void);
+
+// Function that clears the terminal, should work in both unix and windows environments
+void clearscr(void)
+{
+	if (system("CLS"))
+		system("clear");
+}
 
 // Reads in record-jar format file and initializes array of Action objects
 void filein(char* gamefile)
@@ -158,7 +166,7 @@ void printcurrent(int eventenable)
 {
 	int effect;
 
-	system("CLS");
+	clearscr();
 	cout << "z: Exit       h: Help \n-------------------------------------------------\n";
 
 	// Print description of current location
@@ -201,7 +209,7 @@ void notification(int help)
 {
 	string user;
 
-	system("CLS");
+	clearscr();
 
 	if (help == 0)
 		cout << "\nInvalid input. Please enter an indicated character at the front of one of the choices, \n'h' for help, or 'z' to quit. Press enter to return.\n";
@@ -230,7 +238,7 @@ int main()
 	string next;
 
 	// Welcome screen: Addresses player by name and allows for a confidence booster. 
-	system("CLS");
+	clearscr();
 	cout << "Welcome to your adventure, " << username << ".\n\n";
 	cout << "Enter 'Hug' for a hug. Enter something else to start your journey.\n";
 	cin >> startgame;

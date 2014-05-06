@@ -1,6 +1,6 @@
 CXX=g++
 
-Forest: adventure.o
+Forest: adventure.o 
 	${CXX} -o Forest $<
 
 adventure.o: adventure.cpp actionclass.h action.h
