@@ -10,13 +10,12 @@ using namespace std;
 
 // Global variables
 Action actions[250];
-int numactions = 0;
-int cur = 0, health = 50, sanity = 5;
-string username = "Stranger";
+int curPath = 0, health = 50, sanity = 5;
+string username;
 
 // Function prototypes
-void filein(char* gamefile);
-int playerChoice(void);
+int filein(char* gamefile);
+int playerChoice(int totalactions);
 void printcurrent(int eventenable);
 void notification(int helpint);
 void clearscr(void);
@@ -29,10 +28,11 @@ void clearscr(void)
 }
 
 // Reads in record-jar format file and initializes array of Action objects
-void filein(char* gamefile)
+// Returns the number of action objects created
+int filein(char* gamefile)
 {
 	string start, end, newpath;
-	int endint;
+	int endint, numactions = 0;
 
 	ifstream gametext (gamefile);
 
@@ -99,14 +99,16 @@ void filein(char* gamefile)
 		}
 		gametext.close();
 	}
+	return numactions;
 }
 
 // Prints possible paths to player and accepts input based on the letter of the given strings. Returns integer corresponding to path choice.
-int playerChoice()
+// Parameter given is the total number of action objects to iterate through.
+int playerChoice(int totalactions)
 {
 	string path;
 	int choice = 42;
-	int numpath = actions[cur].getnumpaths();
+	int numpath = actions[curPath].getnumpaths();
 
 	while (choice == 42) 
 	{
@@ -125,9 +127,9 @@ int playerChoice()
 				cout << "e. ";
 
 			// Iterates through the Actions to find the specified prompt
-			for (int j = 0; j < numactions; j++)
+			for (int j = 0; j < totalactions; j++)
 			{
-				if (actions[cur].getpath(i) == actions[j].getname())
+				if (actions[curPath].getpath(i) == actions[j].getname())
 				{
 				    cout << actions[j].getprompt() << endl;
 					break;
@@ -172,13 +174,13 @@ void printcurrent(int eventenable)
 	cout << "z: Exit       h: Help \n-------------------------------------------------\n";
 
 	// Print description of current location
-	cout << (actions[cur].getdescr());
+	cout << (actions[curPath].getdescr());
 
 	// Processes event. If a non-zero integer is returned, either health or sanity is affected. 
 	// If either reaches zero, the game ends. 
 	if (eventenable == 1)
 	{
-		effect = actions[cur].itshappening();
+		effect = actions[curPath].itshappening();
 
 		if (effect % 5 == 0)
 			health += effect;
@@ -198,7 +200,8 @@ void printcurrent(int eventenable)
 	}
 	if (sanity <= 0)
 	{
-		cout << "\n\n** The wilderness has driven you crazy. You have lost your mind and cannot continue.\n\n";
+		cout << "\n\n** The wilderness has driven " << username << " crazy. " 
+		     << username << " has lost " << username << "'s mind and cannot continue.\n\n";
 		exit(0);
 	}
 
@@ -239,14 +242,18 @@ void notification(int help)
 // Contains while loop encompassing the adventure game. 
 int main(int argc, char* argv[])
 {
+	int numAct;
+
 	// Read in record-jar formatted text string
-	filein("story.rjar");
+	numAct = filein("story.rjar");
 
 	string startgame;
 	string next;
 
 	if (argv[1] != NULL)
 		username = argv[1];
+	else
+		username = "Stranger";
 
 	// Welcome screen: Addresses player by name and allows for a confidence booster. 
 	clearscr();
@@ -270,14 +277,14 @@ int main(int argc, char* argv[])
         printcurrent(1);
 
 		// Prints array of path choices and prompts for input for path decision. Returns name of chosen path.
-		next = actions[cur].getpath(playerChoice());
+		next = actions[curPath].getpath(playerChoice(numAct));
 		
 		// Searches for the action associated with the chosen path name and returns the action array location whose name corresponds to that string. 
-		for (int i = 0; i < numactions; i++)
+		for (int i = 0; i < numAct; i++)
 		{
 			if (next == actions[i].getname())
 			{
-				cur = i;
+				curPath = i;
 				break;
 			}
 		}
