@@ -15,7 +15,7 @@ How to Play:
 
 To run the C++ program, enter the commands:   
 __$ make   
-$ ./Forest__
+$ ./Forest <desired username>__
 
 To play the game, enter the single alphabetical character (a-e) marking the start of your desired next path. Enter 'z' to exit the game, enter 'h' for help. If an invalid entry is given, you will be notified and then return to the previous screen without any negative effect. 
 

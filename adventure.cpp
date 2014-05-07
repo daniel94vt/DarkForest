@@ -244,7 +244,9 @@ int main(int argc, char* argv[])
 
 	string startgame;
 	string next;
-	username = argv[1];
+
+	if (argv[1] != NULL)
+		username = argv[1];
 
 	// Welcome screen: Addresses player by name and allows for a confidence booster. 
 	clearscr();
