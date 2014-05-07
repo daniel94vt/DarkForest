@@ -191,14 +191,15 @@ void printcurrent(int eventenable)
 	// Maximum health cannot exceed 100.
 	if (health > 100)
 		health = 100;
-	if (sanity > 10)
-		sanity = 10;
 	else if (health <= 0)
 	{
 		cout << "\n\n** Your health has been depleted. Your adventure has prematurely come to its end.\n\n";
 		exit(0);
 	}
-	if (sanity <= 0)
+
+	if (sanity > 10)
+		sanity = 10;
+	else if (sanity <= 0)
 	{
 		cout << "\n\n** The wilderness has driven " << username << " crazy. " 
 		     << username << " has lost " << username << "'s mind and cannot continue.\n\n";
