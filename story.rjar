@@ -868,7 +868,7 @@ prompt: Stop running
 description: After several minutes, you just can't handle the pain from the exertion. You come to a stop and dare to turn around. You don't see or hear any sign of... whatever that was.
 chance: 100
 event: The fear and exhaustion reaching up, you lose your lunch on the ground, then take a seat on a nearby rock. If that thing is still after you, he can have you.
-path: winstate,
+path: beatright,
 %
 name: leftsmoke4
 prompt: To the left
@@ -1431,22 +1431,25 @@ prompt: If you can't take the heat...
 description: Seizing your opportunity, you roll behind the blinded creature and shove her into the open flame. 
 chance: 100
 event: The creature lets out an otherworldly screech as the flames engulf it.
-path: closefurnace, winstate2,
+path: closefurnace, beatleft,
 %
 name: closefurnace
 prompt: Slam the furnace door
 description: You shut the beast in, ensuring the heat purges the evil from the cabin.
-path: winstate2,
+path: beatleft,
 %
-name: winstate2
+name: beatleft
 prompt: Leave the cabin
 description: Not being able to stand a night in this cabin after what you just endured, you take your chances out in the elements as you head toward what you hope is civilization. 
-chance: 100
-win: 1
+path: winstate,
 %
-name: winstate
+name: beatright
 prompt: Wake up
 description: You open your eyes, still in the forest. You see that it's morning by the rim of the sun peeking over a distant mountaintop. You've survived the day and decide to continue toward what you hope is civilization. 
+path: winstate,
+%
+name: winstate
+prompt: Out of the frying pan...
+description: After a few more tangent adventures including but not limited to outsmarting a bridge troll, beheading a zombie, befriending a forest nymph, and arm-wrestling a wayward lumberjack, you say farewell as you dismount the unicorn that was generous enough to give you a lift to the nearest roadway. You pick a direction and begin walking, uncertain of the future but prepared for whatever the world wants to throw at you.
 chance: 100
 win: 1
-
