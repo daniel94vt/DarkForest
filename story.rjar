@@ -5,7 +5,7 @@ path: asleep2, wakeup,
 name: asleep2
 prompt: Stay asleep
 description: 5 more minutes, mom...
-chance: 10
+chance: 25
 event: Hope you enjoy that sleep. It's all you'll be doing for the rest of time.
 change: -100
 path: asleep2, wakeup,

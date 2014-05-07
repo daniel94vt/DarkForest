@@ -10,15 +10,16 @@ using namespace std;
 
 // Global variables
 Action actions[250];
-int curPath = 0, health = 50, sanity = 5;
+int curPath = 0, health, sanity;
 string username;
 
 // Function prototypes
 int filein(char* gamefile);
 int playerChoice(int totalactions);
-void printcurrent(int eventenable);
+int printcurrent(int eventenable);
 void notification(int helpint);
 void clearscr(void);
+void restart(void);
 
 // Function that clears the terminal, should work in both unix and windows environments
 void clearscr(void)
@@ -164,7 +165,7 @@ int playerChoice(int totalactions)
 
 // Prints top reminder help header, current action description, and current stats.
 // If parameter given is 1, the event for the current action is processed. 
-void printcurrent(int eventenable)
+int printcurrent(int eventenable)
 {
 	int effect;
 	int prevhp = health;
@@ -194,7 +195,7 @@ void printcurrent(int eventenable)
 	else if (health <= 0)
 	{
 		cout << "\n\n** Your health has been depleted. Your adventure has prematurely come to its end.\n\n";
-		exit(0);
+		return 1;
 	}
 
 	if (sanity > 10)
@@ -203,7 +204,7 @@ void printcurrent(int eventenable)
 	{
 		cout << "\n\n** The wilderness has driven " << username << " crazy. " 
 		     << username << " has lost " << username << "'s mind and cannot continue.\n\n";
-		exit(0);
+		return 1;
 	}
 
 	if (prevhp != health)
@@ -214,6 +215,8 @@ void printcurrent(int eventenable)
 		cout << "\n\nHealth: " << health << "     Sanity: " << sanity << "\n";
 
 	cout << "-------------------------------------------------- \n" << username << ", choose your path: \n";
+
+	return 0;
 }
 
 // Called if the player input 'h' for help, 'z' to quit, or an invalid string upon path selection. 
@@ -240,10 +243,28 @@ void notification(int help)
 	return;
 }
 
+// Function that determines, from player input, if the game is to be restarted or exited
+void restart(void)
+{
+	string repeat;
+
+	cout << "\nInput 'z' to exit the program. Input anything else to try again. \n";
+	cin >> repeat;
+
+	clearscr();
+
+	if (repeat == "z" || repeat == "Z")
+	{
+		cout << "\nCome back soon, " << username << "!\n\n";
+		exit(0);
+	}
+}
+
+
 // Contains while loop encompassing the adventure game. 
 int main(int argc, char* argv[])
 {
-	int numAct;
+	int numAct, gameover;
 
 	// Read in record-jar formatted text string
 	numAct = filein("story.rjar");
@@ -256,37 +277,49 @@ int main(int argc, char* argv[])
 	else
 		username = "Stranger";
 
-	// Welcome screen: Addresses player by name and allows for a confidence booster. 
-	clearscr();
-	cout << "Welcome to your adventure, " << username << ".\n\n";
-	cout << "Enter 'Hug' for a hug. Enter something else to start your journey.\n";
-	cin >> startgame;
-
-	// Hugs
-	while (startgame == "Hug" || startgame == "hug")
-	{
-		cout << "I <3 " << username << "! <(^-^)>\n";
-                sanity++;
-		health += 10;
-		cin >> startgame;
-	}
-
-	// Encompasses the entire story portion of the game. While loop never ends.
 	while (1)
 	{
-		// Print current description, player statistics, and event outcome.
-        printcurrent(1);
+		// Initialize player stats
+		health = 50;
+		sanity = 5;
 
-		// Prints array of path choices and prompts for input for path decision. Returns name of chosen path.
-		next = actions[curPath].getpath(playerChoice(numAct));
-		
-		// Searches for the action associated with the chosen path name and returns the action array location whose name corresponds to that string. 
-		for (int i = 0; i < numAct; i++)
+		// Welcome screen: Addresses player by name and allows for a confidence booster. 
+		clearscr();
+		cout << "Welcome to your adventure, " << username << ".\n\n";
+		cout << "Enter 'Hug' for a hug. Enter something else to start your journey.\n";
+		cin >> startgame;
+
+		// Hugs for stat bonuses at game start
+		while (startgame == "Hug" || startgame == "hug")
 		{
-			if (next == actions[i].getname())
+			cout << "I <3 " << username << "! <(^-^)>\n";
+                	sanity++;
+			health += 10;
+			cin >> startgame;
+		}
+
+		// Encompasses the story portion of the game. While loop is broken when player dies/goes insane or when player exits program.
+		while (1)
+		{
+			// Print current description, player statistics, and event outcome.
+        		gameover = printcurrent(1);
+
+			if (gameover == 1)
 			{
-				curPath = i;
+				restart();
 				break;
+			}
+			// Prints array of path choices and prompts for input for path decision. Returns name of chosen path.
+			next = actions[curPath].getpath(playerChoice(numAct));
+		
+			// Searches for the action associated with the chosen path name and returns the action array location whose name corresponds to that string. 
+			for (int i = 0; i < numAct; i++)
+			{
+				if (next == actions[i].getname())
+				{
+					curPath = i;
+					break;
+				}
 			}
 		}
 	}
