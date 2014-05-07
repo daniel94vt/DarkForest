@@ -237,13 +237,14 @@ void notification(int help)
 }
 
 // Contains while loop encompassing the adventure game. 
-int main()
+int main(int argc, char* argv[])
 {
 	// Read in record-jar formatted text string
 	filein("story.rjar");
 
 	string startgame;
 	string next;
+	username = argv[1];
 
 	// Welcome screen: Addresses player by name and allows for a confidence booster. 
 	clearscr();
