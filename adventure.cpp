@@ -183,6 +183,10 @@ int printcurrent(int eventenable)
 	{
 		effect = actions[curPath].itshappening();
 
+		// Winstate achieved
+		if (effect == 99)
+			return 1;
+
 		if (effect % 5 == 0)
 			health += effect;
 		else
@@ -248,7 +252,8 @@ void restart(void)
 {
 	string repeat;
 
-	cout << "\nInput 'z' to exit the program. Input anything else to try again. \n";
+	cout << "\n----------------------------------\n\n";
+	cout << "\nInput 'z' to exit the program. Input anything else to play again, " << username << "! \n";
 	cin >> repeat;
 
 	clearscr();
@@ -282,6 +287,7 @@ int main(int argc, char* argv[])
 		// Initialize player stats
 		health = 50;
 		sanity = 5;
+		curPath = 0;
 
 		// Welcome screen: Addresses player by name and allows for a confidence booster. 
 		clearscr();

@@ -84,7 +84,7 @@ int Action :: itshappening(void)
 			if (winlose == 1)
 			{
 				cout << "\n\n\nCongratulations, you win!\n\n";
-				exit(0);
+				return 99;
 			}
 
 			cout << "\n\n* " << eventstr;
