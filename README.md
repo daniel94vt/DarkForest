@@ -1,14 +1,13 @@
 Dark Forest
 ===========
 
+This project will involve a Qt interface that saves username and password information, and it will connect the user to a text-based story-driven adventure game with branching paths. Players will choose their fate as they avoid losing both their health and sanity while navigating a lethal, supernatural forest setting. The branching nature of the game means at least two playthroughs are required to experience all major portions of the game.
+
+<!-- more -->
+
 Contributors: daniel94, arenascf, alirmajd
 
 URL: https://github.com/stryder25/DarkForest
-
-Project Summary:
-----------------
-
-This project will involve a Qt interface that saves username and password information, and it will connect the user to a text-based story-driven adventure game with branching paths. Players will choose their fate as they avoid losing both their health and sanity while navigating a lethal, supernatural forest setting. The branching nature of the game means at least two playthroughs are required to experience all major portions of the game.
 
 *(Note: The Qt interface will be up at a later time. But for now, enjoy the game!)*
 
