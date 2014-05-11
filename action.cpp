@@ -5,6 +5,7 @@
 // numevents initialized to -1 to indicate infinite events possible for this action
 Action :: Action()
 {
+<<<<<<< HEAD
 	name = "";
 	prompt = "";
 	description = "";
@@ -14,6 +15,17 @@ Action :: Action()
 	numpaths = 0;
 	numevents = -1;
 	winlose = 0;
+=======
+    name = "";
+    prompt = "";
+    description = "";
+    chance = 0;
+    eventstr = "";
+    alteration = 0;
+    numpaths = 0;
+    numevents = -1;
+    winlose = 0;
+>>>>>>> 16856cd61e51943d93fd9127140280c93844964f
 }
 
 Action :: ~Action()
@@ -45,7 +57,11 @@ void Action :: addpath(string newpath)
 {
     paths[numpaths] = newpath;
 
+<<<<<<< HEAD
 	numpaths++;
+=======
+    numpaths++;
+>>>>>>> 16856cd61e51943d93fd9127140280c93844964f
 }
 
 void Action :: gameover(int gameover)
@@ -70,6 +86,7 @@ int Action :: getnumpaths()
 // Returns the health/sanity alteration if it is processed, and decrements the remaining events if they are set as finite
 int Action :: itshappening(void)
 {
+<<<<<<< HEAD
 	int rollthedice;
 
 	rollthedice = rand() % 100;
@@ -96,3 +113,30 @@ int Action :: itshappening(void)
 	return 0;
 }
 
+=======
+    int rollthedice;
+
+    rollthedice = rand() % 100;
+
+    if (chance > rollthedice)
+    {
+        if (numevents != 0)
+        {
+            if (winlose == 1)
+            {
+                cout << "\n\n\nCongratulations, you win!\n\n";
+                return 99;
+            }
+
+            cout << "\n\n* " << eventstr;
+
+            if (numevents != -1)
+                numevents--;
+
+            return alteration;
+        }
+    }
+
+    return 0;
+}
+>>>>>>> 16856cd61e51943d93fd9127140280c93844964f
