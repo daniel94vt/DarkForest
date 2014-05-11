@@ -15,9 +15,9 @@ How to Play:
 
 To run the program, enter the commands:   
 __$ make   
-$ ./Forest <option>__
+$ ./Forest [option]__
 
-*Where <option> is __-l__ for existing user or __-n__ for new user*
+*Where [option] is __-l__ for existing user or __-n__ for new user*
 
 To play the game, type the single alphabetical character (a-e) marking the start of your desired next path and press 'Enter'. Input 'z' to exit the game, enter 'h' for help. If an invalid entry is given, you will be notified and then return to the previous screen without any negative effect. 
 
