@@ -19,6 +19,8 @@ $ ./Forest [option]__
 
 *Where [option] is __-l__ for existing user or __-n__ for new user*
 
+If a new user, the game will ask you to enter a new username and create a new password, which must be entered twice for accuracy. If an existing user, you must enter an existing username, then enter the appropriate password when prompted. You will then be able to enter 'y' if you want to change the current password, or 'n' otherwise. At the end of either state, you will be transferred to the text game. 
+
 To play the game, type the single alphabetical character (a-e) marking the start of your desired next path and press 'Enter'. Input 'z' to exit the game, enter 'h' for help. If an invalid entry is given, you will be notified and then return to the previous screen without any negative effect. 
 
 Stay aware of your health and sanity levels throughout the game. If either reaches zero, you lose the game. There are also instant-death paths to look out for; be aware of your surroundings and pay attention to environmental clues. 
