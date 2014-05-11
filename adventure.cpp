@@ -1,4 +1,4 @@
-#include "actionclass.h"
+#include "action.h"
 
 #include <iostream>
 #include <fstream>
@@ -14,28 +14,31 @@ int curPath = 0, health, sanity;
 string username;
 
 // Function prototypes
-int filein(char* gamefile);
+int filein(string gamefile);
 int playerChoice(int totalactions);
 int printcurrent(int eventenable);
 void notification(int helpint);
 void clearscr(void);
 void restart(void);
+void displayEror(int err);
 
 // Function that clears the terminal, should work in both unix and windows environments
 void clearscr(void)
 {
 	if (system("CLS"))
 		system("clear");
+
+	status++;
 }
 
 // Reads in record-jar format file and initializes array of Action objects
 // Returns the number of action objects created
-int filein(char* gamefile)
+int filein(string gamefile)
 {
 	string start, end, newpath;
 	int endint, numactions = 0;
 
-	ifstream gametext (gamefile);
+	ifstream gametext (gamefile.c_str());
 
 	if(gametext != NULL)
 	{

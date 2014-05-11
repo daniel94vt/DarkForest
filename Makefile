@@ -1,11 +1,18 @@
 CXX=g++
 
-Forest: adventure.o 
-	${CXX} -o Forest $<
+Forest: action.o main.o authentication.o
+        ${CXX} action.o main.o authentication.o -o Forest
 
-adventure.o: adventure.cpp actionclass.h action.h
-	${CXX} -c -o $@ $<
+action.o: action.cpp action.h
+        ${CXX} -c $<
+
+main.o: main.cpp action.h authentication.h
+        ${CXX} -c $<
+
+authentication.o: authentication.cpp authentication.h
+        ${CXX} -c $<
 
 .PHONY: clean
 clean:
-	rm Forest adventure.o
+        rm Forest authentication.o main.o action.o
+
