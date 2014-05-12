@@ -21,6 +21,7 @@ void notification(int helpint);
 void clearscr(void);
 void restart(void);
 void displayError(int err);
+void welcomeScreen(void);
 
 // Function that clears the terminal, should work in both unix and windows environments
 void clearscr(void)
@@ -165,6 +166,32 @@ int playerChoice(int totalactions)
 
     }
     return choice;
+}
+
+// Displays welcome text to player, and prompts for hugs for status boost pre-game.
+void welcomeScreen()
+{
+	string startgame;
+
+        clearscr();
+
+        // Addresses player by name
+        cout << "Welcome to your adventure, " << username << ".\n\n";
+        cout << "Enter 'Hug' for a hug. Enter something else to start your journey.\n";
+        cin >> startgame;
+
+        while (startgame == "Hug" || startgame == "hug")
+        {
+            cout << "I <3 " << username << "! <(^-^)>\n";
+                    sanity++;
+            health += 10;
+
+            // Hug limit is capped at 5, when the player hits 100 health
+            if (health >= 100)
+                break;
+
+            cin >> startgame;
+        }
 }
 
 // Prints top reminder help header, current action description, and current stats.

@@ -40,24 +40,8 @@ int main(int argc, char *argv[]) {
         sanity = 5;
         curPath = 0;
 
-        // Welcome screen: Addresses player by name and allows for a confidence booster.
-        clearscr();
-        cout << "Welcome to your adventure, " << username << ".\n\n";
-        cout << "Enter 'Hug' for a hug. Enter something else to start your journey.\n";
-        cin >> startgame;
-
-        // Hugs for stat bonuses at game start
-        while (startgame == "Hug" || startgame == "hug")
-        {
-            cout << "I <3 " << username << "! <(^-^)>\n";
-                    sanity++;
-            health += 10;
-
-            if (health == 100)
-		break;
-
-            cin >> startgame;
-        }
+	// Display opening text to player and prompt for hugs
+        welcomeScreen();
 
         // Encompasses the story portion of the game. While loop is broken when player dies/goes insane or when player exits program.
         while (1)
