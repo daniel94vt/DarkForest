@@ -5,7 +5,7 @@ This project involves a C++ authentication interface which saves username and pa
 
 <!-- more -->
 
-Contributors: daniel94, arenascf, alirmajd
+Contributors: daniel94 (aka stryder25), arenascf, alirmajd
 
 URL: https://github.com/stryder25/DarkForest
 
