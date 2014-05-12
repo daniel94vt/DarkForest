@@ -52,6 +52,10 @@ int main(int argc, char *argv[]) {
             cout << "I <3 " << username << "! <(^-^)>\n";
                     sanity++;
             health += 10;
+
+            if (health == 100)
+		break;
+
             cin >> startgame;
         }
 
