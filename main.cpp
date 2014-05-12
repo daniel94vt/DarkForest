@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     int numAct, gameover;
 
     // Read in record-jar formatted text string
-    numAct = filein("story.rjar");
+    numAct = fileRead("story.rjar");
 
     string startgame;
     string next;
@@ -47,11 +47,11 @@ int main(int argc, char *argv[]) {
         while (1)
         {
             // Print current description, player statistics, and event outcome.
-                gameover = printcurrent(1);
+            gameover = printCurrent(1);
 
             if (gameover == 1)
             {
-                restart();
+                restartGame();
                 break;
             }
             // Prints array of path choices and prompts for input for path decision. Returns name of chosen path.

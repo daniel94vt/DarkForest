@@ -14,17 +14,17 @@ int curPath = 0, health, sanity;
 string username;
 
 // Function prototypes
-int filein(string gamefile);
+int fileRead(string gamefile);
 int playerChoice(int totalactions);
-int printcurrent(int eventenable);
-void notification(int helpint);
-void clearscr(void);
-void restart(void);
+int printCurrent(int eventenable);
+void notifyPlayer(int helpint);
+void clearScreen(void);
+void restartGame(void);
 void displayError(int err);
 void welcomeScreen(void);
 
 // Function that clears the terminal, should work in both unix and windows environments
-void clearscr(void)
+void clearScreen(void)
 {
     int status;
     if (system("CLS"))
@@ -35,7 +35,7 @@ void clearscr(void)
 
 // Reads in record-jar format file and initializes array of Action objects
 // Returns the number of action objects created
-int filein(string gamefile)
+int fileRead(string gamefile)
 {
     string start, end, newpath;
     int endint, numactions = 0;
@@ -143,8 +143,8 @@ int playerChoice(int totalactions)
             }
         }
 
-        // Allow user input to choose path. Lower/upper-case a-e are associated with choices, 'h' calls notification() to display help text.
-        // 'Z' calls notification() to exit the game. An invalid entry calls notification() to alert the player and print instructions.
+        // Allow user input to choose path. Lower/upper-case a-e are associated with choices, 'h' calls notifyPlayer() to display help text.
+        // 'Z' calls the same function to exit the game. An invalid entry calls notifyPlayer() to alert the player and print instructions.
         cin >> path;
 
         if (path == "a" || path == "A")
@@ -158,11 +158,11 @@ int playerChoice(int totalactions)
         else if ((path == "e" || path == "E") && numpath > 4)
             choice = 4;
         else if (path == "h" || path == "H")
-            notification(1);
+            notifyPlayer(1);
         else if (path == "z" || path == "Z")
-            notification(2);
+            notifyPlayer(2);
         else
-            notification(0);
+            notifyPlayer(0);
 
     }
     return choice;
@@ -173,7 +173,7 @@ void welcomeScreen()
 {
 	string startgame;
 
-        clearscr();
+        clearScreen();
 
         // Addresses player by name
         cout << "Welcome to your adventure, " << username << ".\n\n";
@@ -196,13 +196,13 @@ void welcomeScreen()
 
 // Prints top reminder help header, current action description, and current stats.
 // If parameter given is 1, the event for the current action is processed.
-int printcurrent(int eventenable)
+int printCurrent(int eventenable)
 {
     int effect;
     int prevhp = health;
     int prevsan = sanity;
 
-    clearscr();
+    clearScreen();
     cout << "a-e: Choose path     z: Exit       h: Help \n-------------------------------------------------\n";
 
     // Print description of current location
@@ -255,11 +255,11 @@ int printcurrent(int eventenable)
 }
 
 // Called if the player input 'h' for help, 'z' to quit, or an invalid string upon path selection.
-void notification(int help)
+void notifyPlayer(int help)
 {
     string user;
 
-    clearscr();
+    clearScreen();
 
     if (help == 0)
         cout << "\nUh-oh, invalid input, " << username << "! \n";
@@ -276,11 +276,11 @@ void notification(int help)
     cin >> user;
 
     // After user input, clears screen and prints current location description and path options without activating possible events
-    printcurrent(0);
+    printCurrent(0);
 }
 
 // Function that determines, from player input, if the game is to be restarted or exited
-void restart(void)
+void restartGame(void)
 {
     string repeat;
 
@@ -288,7 +288,7 @@ void restart(void)
     cout << "\nInput 'z' to exit the program. Input anything else to play again, " << username << "! \n";
     cin >> repeat;
 
-    clearscr();
+    clearScreen();
 
     if (repeat == "z" || repeat == "Z")
     {
