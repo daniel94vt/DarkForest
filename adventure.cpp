@@ -235,13 +235,16 @@ void notification(int help)
     clearscr();
 
     if (help == 0)
-        cout << "\nInvalid input. Please enter an indicated character at the front of one of the choices, \n'h' for help, or 'z' to quit. Press enter to return.\n";
+        cout << "\nUh-oh, invalid input, " << username << "! \n";
     else if (help == 1)
-        cout << "\nTo play: Enter an input character corresponding to the letter before the period of the path you wish to take. \nInput 'z' to quit the game. Press enter to continue.\n";
+        cout << "\nWelcome to the Help Screen, " << username << "!\n";
     else {
         cout << "\nCome back soon, " << username << "! \n\n";
         exit(0);
     }
+
+    cout << "-------------------------------------\n";
+    cout << "To play: Enter an indicated character ('a'-'e') corresponding to the letter before the period marking the path you wish to take. Input 'z' to quit the game, or 'h' for help, as indicated in the top menu. \n\nInput any value to return to the previous screen.\n";
 
     cin >> user;
 

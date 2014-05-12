@@ -6,7 +6,7 @@ Forest: action.o main.o authentication.o
 action.o: action.cpp action.h
 	${CXX} -c $<
 
-main.o: main.cpp action.h authentication.h
+main.o: main.cpp adventure.cpp action.h authentication.h
 	${CXX} -c $<
 
 authentication.o: authentication.cpp authentication.h
