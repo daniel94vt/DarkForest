@@ -203,7 +203,7 @@ int printcurrent(int eventenable)
     int prevsan = sanity;
 
     clearscr();
-    cout << "z: Exit       h: Help \n-------------------------------------------------\n";
+    cout << "a-e: Choose path     z: Exit       h: Help \n-------------------------------------------------\n";
 
     // Print description of current location
     cout << (actions[curPath].getdescr());
