@@ -96,9 +96,9 @@ int fileRead(string gamefile)
                 else if (start == "change")
                     actions[numactions].setalt(endint);
                 else if (start == "win")
-                    actions[numactions].gameover(endint);
+                    actions[numactions].setwin(endint);
                 else if (start == "max")
-                    actions[numactions].eventlimit(endint);
+                    actions[numactions].seteventlimit(endint);
             }
             // Track number of areas taken from the input file
             numactions++;
@@ -212,7 +212,7 @@ int printCurrent(int eventenable)
     // If either reaches zero, the game ends.
     if (eventenable == 1)
     {
-        effect = actions[curPath].itshappening();
+        effect = actions[curPath].processevent();
 
         // Winstate achieved
         if (effect == 99)

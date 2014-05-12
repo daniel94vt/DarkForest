@@ -13,7 +13,7 @@ Action :: Action()
     alteration = 0;
     numpaths = 0;
     numevents = -1;
-    winlose = 0;
+    winstate = 0;
 }
 
 Action :: ~Action()
@@ -37,7 +37,7 @@ void Action :: setevent(string newevent)
 void Action :: setalt(int change)
 { alteration = change; }
 
-void Action :: eventlimit(int setlimit)
+void Action :: seteventlimit(int setlimit)
 { numevents = setlimit; }
 
 // Add new action name within the array of paths in the current object
@@ -48,8 +48,8 @@ void Action :: addpath(string newpath)
     numpaths++;
 }
 
-void Action :: gameover(int gameover)
-{ winlose = gameover; }
+void Action :: setwin(int gameover)
+{ winstate = gameover; }
 
 string Action :: getname()
 { return name; }
@@ -68,7 +68,7 @@ int Action :: getnumpaths()
 
 // Creates random number to compare to event chance to determine if the event occurs
 // Returns the health/sanity alteration if it is processed, and decrements the remaining events if they are set as finite
-int Action :: itshappening(void)
+int Action :: processevent(void)
 {
     int rollthedice;
 
@@ -78,7 +78,7 @@ int Action :: itshappening(void)
     {
         if (numevents != 0)
         {
-            if (winlose == 1)
+            if (winstate == 1)
             {
                 cout << "\n\n\nCongratulations, you win!\n\n";
                 return 99;

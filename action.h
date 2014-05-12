@@ -30,7 +30,7 @@ private:
     int alteration;
     int numpaths;
     int numevents;
-    int winlose;
+    int winstate;
     string paths[5];
 
 public:
@@ -42,15 +42,15 @@ public:
     void setchance(int chance);
     void setevent(string eventout);
     void setalt(int change);
-    void eventlimit(int setlimit);
+    void seteventlimit(int setlimit);
     void addpath(string newpath);
-    void gameover(int winlose);
+    void setwin(int winstate);
     string getname(void);
     string getprompt(void);
     string getdescr(void);
     string getpath(int chosenpath);
     int getnumpaths(void);
-    int itshappening(void);             // Determines if event will happen and processes if true
+    int processevent(void);             // Determines if event will happen and processes if true
 };
 
 #endif  // ACTION_H
