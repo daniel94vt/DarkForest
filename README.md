@@ -11,7 +11,7 @@ URL: https://github.com/stryder25/DarkForest
 
 
 How to Play:
-------------
+--------------
 
 To run the program, enter the commands:   
 __$ make   
