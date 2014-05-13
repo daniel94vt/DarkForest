@@ -7,8 +7,9 @@
 
 using namespace std;
 
+Authentication game;
+
 int main(int argc, char *argv[]) {
-    Authentication game;
     msgDisplay(0);
     void gameBegin();
     bool rightInp = false;
@@ -33,7 +34,7 @@ int main(int argc, char *argv[]) {
    return 0;
 }
 void gameBegin(){
-    Authentication game;	
+    // Authentication game;	
     username = game.getUserName();
 
     int numAct, gameover;
