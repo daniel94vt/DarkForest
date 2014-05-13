@@ -9,20 +9,31 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     Authentication game;
+    msgDisplay(0);
+    void gameBegin();
+    bool rightInp = false;
 
-    if(argc == 1)
-        displayError(0);
-
-    string parseCommandList = argv[1];
-
-
-    if(parseCommandList == "-l") {
-        game.login();
+    while (rightInp == false){	
+        string input;
+	cin >> input;
+	if (input == "l"){
+		rightInp = true;
+		game.login();
+		gameBegin();
+	}
+	else if ( input == "n"){
+		rightInp = true;
+		game.newUser();
+		gameBegin();
+	}
+	else {
+		msgDisplay(1);
+	}
     }
-    else if(parseCommandList == "-n") {
-        game.newUser();
-    }
-
+   return 0;
+}
+void gameBegin(){
+    Authentication game;	
     username = game.getUserName();
 
     int numAct, gameover;
@@ -68,6 +79,4 @@ int main(int argc, char *argv[]) {
             }
         }
     }
-
-    return 0;
 }
