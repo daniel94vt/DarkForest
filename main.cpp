@@ -9,26 +9,25 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     Authentication game;
-    displayError(0);
+    msgDisplay(0);
     void gameBegin();
     bool rightInp = false;
 
     while (rightInp == false){	
         string input;
 	cin >> input;
-	if (input == "-l"){
+	if (input == "l"){
 		rightInp = true;
 		game.login();
 		gameBegin();
 	}
-	else if ( input == "-n"){
+	else if ( input == "n"){
 		rightInp = true;
 		game.newUser();
 		gameBegin();
 	}
 	else {
-		displayError(1);
-		displayError(0);
+		msgDisplay(1);
 	}
     }
    return 0;
