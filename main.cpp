@@ -7,8 +7,11 @@
 
 using namespace std;
 
+// Global game object
 Authentication game;
 
+// Main prompts player to indicate new or existing user, then calls the appropriate function for either. Afterward,
+// the function containing the adventure game is called.
 int main(int argc, char *argv[]) {
     msgDisplay(0);
     void gameBegin();
@@ -17,24 +20,27 @@ int main(int argc, char *argv[]) {
     while (rightInp == false){	
         string input;
 	cin >> input;
-	if (input == "l"){
+	if (input == "l"){          // Existing user
 		rightInp = true;
 		game.login();
 		gameBegin();
 	}
-	else if ( input == "n"){
+	else if ( input == "n"){    // New user
 		rightInp = true;
 		game.newUser();
 		gameBegin();
 	}
 	else {
-		msgDisplay(1);
+		msgDisplay(1);     // Instructions reiterated if invalid entry given
 	}
     }
    return 0;
 }
+
+// This function encompasses the adventure game, including reading in the record-jar file, calling the welcome
+// screen, calling the function to print path selections, and updating the current action position.
 void gameBegin(){
-    // Authentication game;	
+    // Retrieve username from the game object made during initial steps of main
     username = game.getUserName();
 
     int numAct, gameover;

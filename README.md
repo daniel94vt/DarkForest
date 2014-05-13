@@ -37,5 +37,6 @@ Alterations after user reviews:
 - One player mentioned that it was unclear how to return to the path selection screen after the invalid entry screen. Additional text is output to more explicitly guide the player.
 - It was noted that the number of hugs (and thus stat increases) was seemingly unlimited; a cap was placed directly in that process so that the game will start after no more than 5 hugs.
 - It was suggested that more functions be made to increase modularity, so changes were made including delegating the welcome screen previously in main() to its own function and simply calling it at the start.
-- Naming schemes for functions was made more consistent
+- Naming schemes for functions were made more consistent
+- More comments added to code, notable in main.cpp
 - As suggested by a reviewer, the choice of new or existing user was altered to be entered after running the game from the command line, rather than as an option, for a more intuitive experience.
