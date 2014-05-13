@@ -15,11 +15,9 @@ How to Play:
 
 To run the program, enter the commands:   
 __$ make   
-$ ./Forest [option]__
+$ ./Forest__
 
-*Where [option] is __-l__ for existing user or __-n__ for new user*
-
-If a new user, the game will ask you to enter a new username and create a new password, which must be entered twice for accuracy. If an existing user, you must enter an existing username, then enter the appropriate password when prompted. You will then be able to enter 'y' if you want to change the current password, or 'n' otherwise. At the end of either state, you will be transferred to the text game. 
+You will be prompted to say if you are a new or existing user at the start. If new, the game will ask you to enter a new username and create a new password, which must be entered twice for accuracy. If an existing user, you must enter an existing username, then enter the appropriate password when prompted. You will then be able to enter 'y' if you want to change the current password, or 'n' otherwise. At the end of either state, you will be transferred to the text game. 
 
 To play the game, type the single alphabetical character (a-e) marking the start of your desired next path and press 'Enter'. Input 'z' to exit the game, enter 'h' for help. If an invalid entry is given, you will be notified and then return to the previous screen without any negative effect. 
 
@@ -40,3 +38,4 @@ Alterations after user reviews:
 - It was noted that the number of hugs (and thus stat increases) was seemingly unlimited; a cap was placed directly in that process so that the game will start after no more than 5 hugs.
 - It was suggested that more functions be made to increase modularity, so changes were made including delegating the welcome screen previously in main() to its own function and simply calling it at the start.
 - Naming schemes for functions was made more consistent
+- As suggested by a reviewer, the choice of new or existing user was altered to be entered after running the game from the command line, rather than as an option, for a more intuitive experience.
