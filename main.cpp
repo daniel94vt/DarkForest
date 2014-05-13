@@ -10,21 +10,22 @@ using namespace std;
 int main(int argc, char *argv[]) {
     Authentication game;
     msgDisplay(0);
-    void gameBegin();
+    void gameBegin(string);
     bool rightInp = false;
 
     while (rightInp == false){	
         string input;
+	cout << "> ";
 	cin >> input;
 	if (input == "l"){
 		rightInp = true;
-		game.login();
-		gameBegin();
+		game.login(); 
+		gameBegin(game.getUserName());
 	}
 	else if ( input == "n"){
 		rightInp = true;
 		game.newUser();
-		gameBegin();
+		gameBegin(game.getUserName());
 	}
 	else {
 		msgDisplay(1);
@@ -32,9 +33,8 @@ int main(int argc, char *argv[]) {
     }
    return 0;
 }
-void gameBegin(){
-    Authentication game;	
-    username = game.getUserName();
+void gameBegin(string name){
+    username = name;
 
     int numAct, gameover;
 
