@@ -301,7 +301,7 @@ void displayError(int err) {
     if(err == 0) {
         fputs("Usage:     ./Forest command1\n"
                     "command1 : -l\t Current User   : Login with your username and password\n"
-                    "           -n\t New User       : Create a new username and password", stderr);
+                    "           -n\t New User       : Create a new username and password\n", stderr);
         exit(EXIT_FAILURE);
     }
     else if(err == 1) {
