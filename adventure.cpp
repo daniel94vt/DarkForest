@@ -297,21 +297,12 @@ void restartGame(void)
     }
 }
 
-<<<<<<< HEAD
-void displayError(int err) {
-    if(err == 0) {
-        fputs("Usage:     ./Forest command1\n"
-                    "command1 : -l\t Current User   : Login with your username and password\n"
-                    "           -n\t New User       : Create a new username and password\n", stderr);
-        exit(EXIT_FAILURE);
-=======
 void msgDisplay(int type) {
     if(type == 0) {
         fputs("Welcome to DarkForest\n"
 		    "To play the game please enter one of the following commands\n"
                     "command : 'l'\t Current User   : Login with your username and password\n"
                     "          'n'\t New User       : Create a new username and password\n",stderr);
->>>>>>> a3f874b414ed2d62cac4d3f292c54da93951fbfe
     }
     else if(type == 1) {
         fputs("Error:  Invalid command\n"
