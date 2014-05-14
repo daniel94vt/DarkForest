@@ -33,7 +33,7 @@ private:
     void writeFile();
     void splitString(vector<string>);
 
-    string checkUsername(string, string);
+    string checkUsername(string);
     string validatePassword(string, string);
     void changePassword(string);
 };
