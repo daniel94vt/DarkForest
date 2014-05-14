@@ -14,21 +14,22 @@ Authentication game;
 // the function containing the adventure game is called.
 int main(int argc, char *argv[]) {
     msgDisplay(0);
-    void gameBegin();
+    void gameBegin(string);
     bool rightInp = false;
 
     while (rightInp == false){	
         string input;
+	cout << "> ";
 	cin >> input;
 	if (input == "l"){          // Existing user
 		rightInp = true;
-		game.login();
-		gameBegin();
+		game.login(); 
+		gameBegin(game.getUserName());
 	}
 	else if ( input == "n"){    // New user
 		rightInp = true;
 		game.newUser();
-		gameBegin();
+		gameBegin(game.getUserName());
 	}
 	else {
 		msgDisplay(1);     // Instructions reiterated if invalid entry given
@@ -36,12 +37,12 @@ int main(int argc, char *argv[]) {
     }
    return 0;
 }
+<<<<<<< HEAD
 
 // This function encompasses the adventure game, including reading in the record-jar file, calling the welcome
 // screen, calling the function to print path selections, and updating the current action position.
-void gameBegin(){
-    // Retrieve username from the game object made during initial steps of main
-    username = game.getUserName();
+void gameBegin(string name){
+    username = name;
 
     int numAct, gameover;
 
