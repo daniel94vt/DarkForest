@@ -1,14 +1,17 @@
 #include "authentication.h"
 
+/* Constructor: reads in the Data.dat file to see if there are any names */
+/* and passwords currently in the file.					 */
+/* tcgetattr gets the terminal attributes			 	 */
 Authentication::Authentication()
 {
     readFile();
     tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
     newt.c_lflag &= ~ECHO;
-    writeFile();
 }
-
+/* Read in Data.dat to see if there are any usernames and passwords.	 */
+/* Not that hard to understand.						 */
 void Authentication::readFile() {
     ifstream file("Data.dat");
 
@@ -28,6 +31,8 @@ void Authentication::readFile() {
     splitString(userData);
 }
 
+/* Takes in a vector of strings and splits them by a delimiter.		 */
+/* The data is put in its respective map.				 */
 void Authentication::splitString(vector<string> data) {
     string delimiter = "::";
     for(unsigned int i = 0; i < data.size(); i++) {
@@ -40,6 +45,8 @@ void Authentication::splitString(vector<string> data) {
     }
 }
 
+/* Writes all usernames and passwords to Data.dat is a specific format,	 */
+/* SHOCKER!								 */
 void Authentication::writeFile() {
     ofstream file("Data.dat");
 
@@ -48,15 +55,18 @@ void Authentication::writeFile() {
             file << m_username[i] << "::" << m_password[i] << "\n";
         }
     }
-
 }
 
+/* Function to set up a new user. Input a name, check if its taken.	 */
+/* If the name is not taken, goes to another function, validatePassword	 */
+/* to get the password the user wants and returns the password		 */
+/* Both password and username are inserted into their respective map.	 */
 void Authentication::newUser() {
     string temp;
     cout << "Please choose a username:  ";
     cin >> temp;
 
-    string name = checkUsername(temp, "\nThe username is already taken.\n\n");
+    string name = checkUsername(temp);
     m_username.insert(pair<int, string>(m_username.size(), name));
 
     string password;
@@ -68,6 +78,8 @@ void Authentication::newUser() {
     m_user = name;
 }
 
+/* The user already has a username and password. Checks the file if	 */
+/* their login info can be found. User has the option to change password */
 void Authentication::login() {
     readFile();
     bool correctInfo;
@@ -103,6 +115,8 @@ void Authentication::login() {
     changePassword(name);
 }
 
+/* Allows the user to change their password. If yes, the user can change */
+/* their password.							 */
 void Authentication::changePassword(string name) {
     char ans;
     string password;
@@ -121,6 +135,10 @@ void Authentication::changePassword(string name) {
     }
 }
 
+/* Takes in the parameters mess1, mess2 to display different messages, 	 */
+/* since this function is used by changePassword and newUser.		 */
+/* Asks the user to input both passwords and checks if they are the same.*/
+/* If they are the same it returns the password.			 */
 string Authentication::validatePassword(string mess1, string mess2) {
     string pass1, pass2;
     do {
@@ -141,7 +159,9 @@ string Authentication::validatePassword(string mess1, string mess2) {
     return pass1;
 }
 
-string Authentication::checkUsername(string name, string message) {
+/* Checks if the username is either taken or if the username could not	 */
+/* be found. Used by newUser()						 */
+string Authentication::checkUsername(string name) {
     bool isTaken;
     do {
         isTaken = false;
@@ -149,7 +169,7 @@ string Authentication::checkUsername(string name, string message) {
         for(unsigned int i = 0; i < m_username.size(); i++) {
             if(m_username[i] == name) {
                 isTaken = true;
-                cout << message;
+                cout << "\nThe username is already taken.\n\n";
             }
         }
         if(isTaken) {
@@ -161,6 +181,7 @@ string Authentication::checkUsername(string name, string message) {
     return name;
 }
 
+/* Returns the user's username.						 */
 string Authentication::getUserName() {
     return m_user;
 }
