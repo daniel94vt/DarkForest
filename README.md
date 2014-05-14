@@ -38,7 +38,7 @@ Alterations after user reviews:
 - It was noted that the number of hugs (and thus stat increases) was seemingly unlimited; a cap was placed directly in that process so that the game will start after no more than 5 hugs.
 - It was suggested that more functions be made to increase modularity, so changes were made including delegating the welcome screen previously in main() to its own function and simply calling it at the start.
 - Naming schemes for functions were made more consistent
-- More comments added to code, notable in main.cpp
+- More comments added to code for clarity, notably in authentication.cpp and main.cpp
 - As suggested by a reviewer, the choice of new or existing user was altered to be entered after running the game from the command line, rather than as an option, for a more intuitive experience.
 
 (Daniel's) Comments on user feedback of game design: There were some good points made about the adventure itself, such as the relative linearity in making it necessary to find a certain object or action to continue forward and subsequently blocking off previous paths. I definitely would have liked to allow for all of these backtracking scenarios, but I wrote the game to be relatively story-driven in nature, and I had to make concessions with driving the player forward in order to make the narrative flow and maintain a sense of personality. If I didn't have finals to deal with, I certainly would have liked to open the player up to even more possibilities.

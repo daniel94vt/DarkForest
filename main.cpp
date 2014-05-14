@@ -37,7 +37,6 @@ int main(int argc, char *argv[]) {
     }
    return 0;
 }
-<<<<<<< HEAD
 
 // This function encompasses the adventure game, including reading in the record-jar file, calling the welcome
 // screen, calling the function to print path selections, and updating the current action position.
